@@ -302,6 +302,65 @@ textarea:focus {
   line-height: 1.45;
 }
 
+.decision-panel {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+
+.decision-panel[hidden] {
+  display: none;
+}
+
+.decision-panel.conflict {
+  border-left-color: var(--red);
+  background: var(--red-bg);
+}
+
+.decision-panel.clear {
+  border-left-color: var(--green);
+  background: var(--green-bg);
+}
+
+.decision-panel.historical {
+  border-left-color: var(--amber);
+  background: var(--amber-bg);
+}
+
+.decision-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.decision-head div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.decision-head strong {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.decision-head span:last-child {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.decision-evidence {
+  display: grid;
+  gap: 6px;
+}
+
 .results-list {
   display: grid;
   gap: 10px;
@@ -487,7 +546,8 @@ textarea:focus {
 
   .app-header,
   .panel-heading,
-  .result-topline {
+  .result-topline,
+  .decision-head {
     display: grid;
   }
 

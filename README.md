@@ -25,4 +25,4 @@ http://localhost:8000/?submission=Ashley%20Rocc&reviewers=Laura%20Doria&run=1
 
 ## Data Notes
 
-The dashboard flags conflicts when two normalized author names appear on the same UTD-indexed publication. UTD author names are not disambiguated person identifiers, so name collisions and spelling variants should be reviewed manually. Institution labels are the latest UTD-recorded article affiliations, not live appointment records.
+The dashboard flags conflicts when two normalized author names appear on the same UTD-indexed publication. UTD author names are not disambiguated person identifiers, so name collisions and spelling variants should be reviewed manually. Institution labels are the latest UTD-recorded article affiliations, not live appointment records. When an unresolved name is resolved by choosing a suggested UTD author, the app recomputes the assignment and shows a decision panel for that resolution.

@@ -9,6 +9,8 @@ const state = {
   filter: "all",
   lastRun: null,
   neighborCache: new Map(),
+  resolutions: new Map(),
+  selectedResolution: null,
 };
 
 const els = {};
@@ -31,6 +33,11 @@ function cacheElements() {
     "metricConflicts",
     "metricClear",
     "metricUnresolved",
+    "decisionPanel",
+    "decisionBadge",
+    "decisionTitle",
+    "decisionDetail",
+    "decisionEvidence",
     "resultsEmpty",
     "resultsList",
     "lookupInput",
@@ -109,8 +116,8 @@ function runConflictCheck() {
 
   const submissionInputs = parseNames(els.submissionAuthors.value);
   const reviewerInputs = parseNames(els.candidateReviewers.value);
-  const submission = submissionInputs.map(resolveName);
-  const reviewers = reviewerInputs.map(resolveName);
+  const submission = submissionInputs.map((input) => resolveName(input, "submission"));
+  const reviewers = reviewerInputs.map((input) => resolveName(input, "reviewer"));
   const minYear = selectedMinYear();
   const rows = [];
   const reviewerStatuses = new Map();
@@ -192,6 +199,7 @@ function runConflictCheck() {
   els.metricUnresolved.textContent = format(unresolved.length);
   els.downloadCsv.disabled = false;
   renderResults();
+  renderResolutionDecision();
 }
 
 function renderResults() {
@@ -310,7 +318,10 @@ function renderUnresolvedItem(item) {
   const wrapper = document.createElement("div");
   wrapper.className = "unresolved-item";
   const title = document.createElement("strong");
-  title.textContent = `No exact match: ${item.input}`;
+  title.textContent =
+    item.side === "lookup"
+      ? `No exact match: ${item.input}`
+      : `No exact ${roleLabel(item.side)} match: ${item.input}`;
   wrapper.appendChild(title);
 
   if (item.suggestions.length) {
@@ -327,10 +338,12 @@ function renderUnresolvedItem(item) {
       const activity = document.createElement("small");
       activity.textContent = `${author.c} UTD publication${author.c === 1 ? "" : "s"}, ${author.f}-${author.l}`;
       button.append(name, affiliation, activity);
-      button.setAttribute("aria-label", `${author.n}. ${affiliation.textContent}. ${activity.textContent}.`);
+      button.setAttribute(
+        "aria-label",
+        `${author.n}. ${affiliation.textContent}. ${activity.textContent}.`
+      );
       button.addEventListener("click", () => {
-        els.lookupInput.value = author.n;
-        renderLookup();
+        selectSuggestedAuthor(item, author);
       });
       suggestions.appendChild(button);
     });
@@ -354,7 +367,7 @@ function renderLookup() {
     return;
   }
 
-  const resolved = resolveName(raw);
+  const resolved = resolveName(raw, "lookup");
   if (!resolved.match) {
     els.lookupOutput.appendChild(renderUnresolvedItem(resolved));
     return;
@@ -413,6 +426,113 @@ function renderLookup() {
   });
 }
 
+function selectSuggestedAuthor(item, author) {
+  els.lookupInput.value = author.n;
+  if (item.side === "lookup") {
+    renderLookup();
+    return;
+  }
+
+  state.resolutions.set(resolutionKey(item.side, item.key), author);
+  state.selectedResolution = {
+    side: item.side,
+    input: item.input,
+    key: item.key,
+    authorId: author.id,
+  };
+  renderLookup();
+  runConflictCheck();
+}
+
+function renderResolutionDecision() {
+  if (!state.lastRun || !state.selectedResolution) {
+    els.decisionPanel.hidden = true;
+    return;
+  }
+
+  const selectedSide = state.selectedResolution.side;
+  const selectedList =
+    selectedSide === "reviewer" ? state.lastRun.reviewers : state.lastRun.submission;
+  const oppositeList =
+    selectedSide === "reviewer" ? state.lastRun.submission : state.lastRun.reviewers;
+  const selectedItem = selectedList.find(
+    (item) =>
+      item.key === state.selectedResolution.key &&
+      item.input === state.selectedResolution.input &&
+      item.match?.id === state.selectedResolution.authorId
+  );
+
+  if (!selectedItem?.match) {
+    els.decisionPanel.hidden = true;
+    return;
+  }
+
+  const comparedOpposite = oppositeList.filter((item) => item.match);
+  const unresolvedOpposite = oppositeList.filter((item) => !item.match);
+  const relevantRows = state.lastRun.rows.filter((row) =>
+    selectedSide === "reviewer"
+      ? row.reviewer.match?.id === selectedItem.match.id
+      : row.author.match?.id === selectedItem.match.id
+  );
+  const conflictRows = relevantRows.filter((row) => row.inWindow);
+  const historicalRows = relevantRows.filter((row) => !row.inWindow);
+
+  let mode = "info";
+  let badge = "Needs review";
+  let title = "Resolve the remaining names";
+  let detail = "";
+  let evidenceRows = [];
+
+  if (conflictRows.length) {
+    mode = "conflict";
+    badge = "Conflict";
+    title = "Conflict: do not assign";
+    detail = `${selectedItem.input} was resolved as ${selectedItem.match.n}. ${selectedItem.match.n} has selected-window UTD coauthorship with ${uniqueCounterpartNames(conflictRows, selectedSide).join(", ")}.`;
+    evidenceRows = conflictRows;
+  } else if (unresolvedOpposite.length) {
+    mode = "needs-review";
+    badge = "Needs review";
+    title = "Resolve the other side before deciding";
+    detail = `${selectedItem.input} was resolved as ${selectedItem.match.n}. No conflict can be finalized until ${unresolvedOpposite.map((item) => item.input).join(", ")} is resolved.`;
+    evidenceRows = historicalRows;
+  } else if (historicalRows.length) {
+    mode = "historical";
+    badge = "Historical";
+    title = "Historical only in selected window";
+    detail = `${selectedItem.input} was resolved as ${selectedItem.match.n}. Shared UTD work exists, but none inside ${windowLabel()}.`;
+    evidenceRows = historicalRows;
+  } else if (comparedOpposite.length) {
+    mode = "clear";
+    badge = "Clear";
+    title = "Clear in selected window";
+    detail = `${selectedItem.input} was resolved as ${selectedItem.match.n}. No selected-window UTD coauthorship was found against ${comparedOpposite.length} resolved ${oppositeRoleLabel(selectedSide)}.`;
+  } else {
+    detail = `${selectedItem.input} was resolved as ${selectedItem.match.n}. Add a ${oppositeRoleLabel(selectedSide)} to make a conflict decision.`;
+  }
+
+  els.decisionPanel.className = `decision-panel ${mode}`;
+  els.decisionBadge.className = `badge ${mode === "needs-review" ? "info" : mode}`;
+  els.decisionBadge.textContent = badge;
+  els.decisionTitle.textContent = title;
+  els.decisionDetail.textContent = detail;
+  els.decisionEvidence.replaceChildren();
+
+  evidenceRows.slice(0, 4).forEach((row) => {
+    if (row.type === "same-person") {
+      const same = document.createElement("div");
+      same.className = "article-line";
+      same.textContent = "Same UTD author selected on both sides.";
+      els.decisionEvidence.appendChild(same);
+      return;
+    }
+    row.shownArticles.slice(0, 2).forEach((article) => {
+      els.decisionEvidence.appendChild(renderArticleLine(article));
+    });
+  });
+
+  els.decisionPanel.hidden = false;
+}
+
 function authorAffiliationLabel(author) {
   if (author.u) {
     return `Latest UTD affiliation: ${author.u}${author.uy ? ` (${author.uy})` : ""}`;
@@ -442,26 +562,61 @@ function parseNames(value) {
   return Array.from(new Set(trimmed.split(separator).map((item) => item.trim()).filter(Boolean)));
 }
 
-function resolveName(input) {
+function resolveName(input, side = "lookup") {
   const key = normalizeName(input);
-  const match = state.authorsByNorm.get(key) || null;
+  const manualMatch = state.resolutions.get(resolutionKey(side, key)) || null;
+  const match = manualMatch || state.authorsByNorm.get(key) || null;
   return {
     input,
     key,
+    side,
     match,
+    manual: Boolean(manualMatch),
     suggestions: match ? [] : searchAuthors(key, 6),
   };
+}
+
+function resolutionKey(side, key) {
+  return `${side}:${key}`;
+}
+
+function roleLabel(side) {
+  if (side === "submission") return "submission author";
+  if (side === "reviewer") return "candidate reviewer";
+  return "author";
+}
+
+function oppositeRoleLabel(side) {
+  return side === "reviewer" ? "submission author" : "candidate reviewer";
+}
+
+function uniqueCounterpartNames(rows, selectedSide) {
+  const names = rows.map((row) =>
+    selectedSide === "reviewer" ? row.author.match?.n : row.reviewer.match?.n
+  );
+  return Array.from(new Set(names.filter(Boolean)));
+}
+
+function windowLabel() {
+  const minYear = selectedMinYear();
+  if (!minYear) return "all UTD years";
+  return `${minYear}-${state.data.meta.maxYear}`;
 }
 
 function searchAuthors(key, limit) {
   if (!key) return [];
   const tokens = key.split(" ").filter(Boolean);
+  const compactKey = compactName(key);
   const scored = [];
   state.data.authors.forEach((author) => {
     let score = 0;
+    const authorCompact = compactName(author.k);
     if (author.k === key) score += 10000;
+    if (authorCompact === compactKey) score += 9800;
     if (author.k.startsWith(key)) score += 900;
+    if (authorCompact.startsWith(compactKey)) score += 760;
     if (author.k.includes(key)) score += 520;
+    if (authorCompact.includes(compactKey)) score += 420;
     let matchedTokens = 0;
     tokens.forEach((token) => {
       if (author.k.includes(token)) matchedTokens += 1;
@@ -475,6 +630,10 @@ function searchAuthors(key, limit) {
     .sort((left, right) => right.score - left.score || right.author.l - left.author.l || right.author.c - left.author.c)
     .slice(0, limit)
     .map((item) => item.author);
+}
+
+function compactName(value) {
+  return value.replace(/\s+/g, "");
 }
 
 function selectedMinYear() {
@@ -507,10 +666,13 @@ function clearInputs() {
   els.candidateReviewers.value = "";
   els.lookupInput.value = "";
   state.lastRun = null;
+  state.selectedResolution = null;
+  state.resolutions.clear();
   els.metricConflicts.textContent = "0";
   els.metricClear.textContent = "0";
   els.metricUnresolved.textContent = "0";
   els.downloadCsv.disabled = true;
+  els.decisionPanel.hidden = true;
   els.resultsList.replaceChildren();
   els.resultsList.hidden = true;
   els.resultsEmpty.hidden = false;
