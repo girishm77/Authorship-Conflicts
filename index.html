@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coauthor Conflict Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Reviewer assignment screen</p>
+        <h1>Coauthor Conflict Dashboard</h1>
+      </div>
+      <div class="data-status" id="dataStatus">Loading UTD index...</div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel input-panel" aria-labelledby="screeningTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Screen</p>
+            <h2 id="screeningTitle">Submission against reviewers</h2>
+          </div>
+          <select id="windowSelect" aria-label="Conflict window">
+            <option value="all">All UTD years</option>
+            <option value="10">Last 10 years</option>
+            <option value="5" selected>Last 5 years</option>
+            <option value="3">Last 3 years</option>
+          </select>
+        </div>
+
+        <label class="field">
+          <span>Submission authors</span>
+          <textarea id="submissionAuthors" rows="8" spellcheck="false" placeholder="One author per line, or comma separated"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Candidate reviewers</span>
+          <textarea id="candidateReviewers" rows="8" spellcheck="false" placeholder="One reviewer per line, or comma separated"></textarea>
+        </label>
+
+        <div class="button-row">
+          <button id="runCheck" class="button primary" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 6-11 11-5-5"></path></svg>
+            <span>Check conflicts</span>
+          </button>
+          <button id="downloadCsv" class="button" type="button" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
+            <span>Export CSV</span>
+          </button>
+          <button id="clearInputs" class="button subtle" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path></svg>
+            <span>Clear</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="panel results-panel" aria-labelledby="resultsTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Results</p>
+            <h2 id="resultsTitle">Conflict review</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Result filter">
+            <button class="tab active" type="button" data-filter="all">All</button>
+            <button class="tab" type="button" data-filter="conflicts">Conflicts</button>
+            <button class="tab" type="button" data-filter="unresolved">Unresolved</button>
+          </div>
+        </div>
+
+        <div class="metrics" aria-label="Screening summary">
+          <div class="metric">
+            <strong id="metricConflicts">0</strong>
+            <span>Conflicts</span>
+          </div>
+          <div class="metric">
+            <strong id="metricClear">0</strong>
+            <span>Clear reviewers</span>
+          </div>
+          <div class="metric">
+            <strong id="metricUnresolved">0</strong>
+            <span>Unresolved names</span>
+          </div>
+        </div>
+
+        <div id="resultsEmpty" class="empty-state">
+          Enter authors and candidate reviewers, then run a conflict check.
+        </div>
+        <div id="resultsList" class="results-list" hidden></div>
+      </section>
+
+      <section class="panel lookup-panel" aria-labelledby="lookupTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Lookup</p>
+            <h2 id="lookupTitle">Author network</h2>
+          </div>
+        </div>
+
+        <label class="field compact">
+          <span>Inspect author</span>
+          <input id="lookupInput" type="search" spellcheck="false" autocomplete="off" placeholder="Type an author name">
+        </label>
+
+        <div id="lookupOutput" class="lookup-output">
+          Search an author to view recent UTD coauthors.
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="siteFooter">
+      UTD coauthorship data is loading.
+    </footer>
+  </body>
+</html>
