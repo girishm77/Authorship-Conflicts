@@ -54,7 +54,14 @@ textarea {
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  padding: 28px 0 18px;
+  position: relative;
+  padding: 42px 0 18px;
+}
+
+.header-actions {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
 }
 
 h1,
@@ -109,6 +116,26 @@ h2 {
   border-color: rgba(180, 35, 24, 0.28);
   background: var(--red-bg);
   color: var(--red);
+}
+
+.copyright {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 720;
+  line-height: 1.25;
+  position: absolute;
+  right: 0;
+  top: 14px;
+}
+
+.copyright a {
+  color: var(--teal-dark);
+  text-decoration: none;
+}
+
+.copyright a:hover,
+.copyright a:focus {
+  text-decoration: underline;
 }
 
 .dashboard {
@@ -554,6 +581,10 @@ textarea:focus {
   .data-status {
     max-width: none;
     text-align: left;
+  }
+
+  .header-actions {
+    justify-items: start;
   }
 
   .dashboard {

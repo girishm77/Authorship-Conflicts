@@ -1,4 +1,4 @@
-# Coauthor Conflict Dashboard
+# Author-Reviewer Conflict Dashboard
 
 Static GitHub Pages dashboard for screening reviewer assignments against UTD coauthorship history.
 
