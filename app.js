@@ -953,71 +953,36 @@ function runNetworkSimulation(graph, focalId) {
     return { node, g, circle, label, radius: radiusFor(node) };
   });
 
-  let alpha = 1;
-  const idealLength = Math.min(width, height) * 0.16;
-
-  function tick() {
-    alpha *= 0.985;
-    // Repulsion (O(n^2), n <= ~41).
-    for (let i = 0; i < graph.nodes.length; i += 1) {
-      const a = graph.nodes[i];
-      for (let j = i + 1; j < graph.nodes.length; j += 1) {
-        const b = graph.nodes[j];
-        let dx = a.x - b.x;
-        let dy = a.y - b.y;
-        let distSq = dx * dx + dy * dy;
-        if (distSq < 0.01) {
-          dx = (Math.random() - 0.5) * 0.5;
-          dy = (Math.random() - 0.5) * 0.5;
-          distSq = dx * dx + dy * dy;
-        }
-        const dist = Math.sqrt(distSq);
-        const force = (3200 * alpha) / distSq;
-        const fx = (dx / dist) * force;
-        const fy = (dy / dist) * force;
-        a.vx += fx;
-        a.vy += fy;
-        b.vx -= fx;
-        b.vy -= fy;
-      }
+  // Label-aware collision radius so circles AND their name labels keep clear
+  // of each other. Measured once from the rendered text width.
+  nodeEls.forEach((entry) => {
+    let halfWidth;
+    try {
+      halfWidth = entry.label.getComputedTextLength() / 2;
+    } catch (error) {
+      halfWidth = entry.node.name.length * 3.2;
     }
-    // Springs along edges.
-    graph.edges.forEach((edge) => {
-      const a = edge.source;
-      const b = edge.target;
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
-      const desired = idealLength / Math.sqrt(edge.weight);
-      const force = (dist - desired) * 0.05 * alpha;
-      const fx = (dx / dist) * force;
-      const fy = (dy / dist) * force;
-      a.vx += fx;
-      a.vy += fy;
-      b.vx -= fx;
-      b.vy -= fy;
-    });
-    // Centering + integrate.
-    graph.nodes.forEach((node) => {
-      if (node.fixed) {
-        node.vx = 0;
-        node.vy = 0;
-        return;
-      }
-      node.vx += (cx - node.x) * 0.012 * alpha;
-      node.vy += (cy - node.y) * 0.012 * alpha;
-      if (node.focal) {
-        node.vx += (cx - node.x) * 0.18;
-        node.vy += (cy - node.y) * 0.18;
-      }
-      node.vx *= 0.82;
-      node.vy *= 0.82;
-      node.x += node.vx;
-      node.y += node.vy;
-      node.x = Math.max(24, Math.min(width - 24, node.x));
-      node.y = Math.max(20, Math.min(height - 20, node.y));
-    });
+    if (!halfWidth || !isFinite(halfWidth)) halfWidth = entry.node.name.length * 3.2;
+    const collide = Math.max(entry.radius + 10, Math.min(halfWidth * 0.78, 58));
+    entry.collide = collide;
+    entry.node.collide = collide;
+  });
 
+  // Degree drives link length: well-connected hubs sit a little closer.
+  const degree = new Map(graph.nodes.map((node) => [node.id, 0]));
+  graph.edges.forEach((edge) => {
+    degree.set(edge.source.id, degree.get(edge.source.id) + 1);
+    degree.set(edge.target.id, degree.get(edge.target.id) + 1);
+  });
+
+  const nodes = graph.nodes;
+  const n = nodes.length;
+  let alpha = 1;
+  let fitted = false;
+  const baseLink = Math.max(54, Math.min(width, height) * 0.22);
+  const charge = 120;
+
+  function render() {
     edgeEls.forEach(({ edge, line }) => {
       line.setAttribute("x1", edge.source.x.toFixed(1));
       line.setAttribute("y1", edge.source.y.toFixed(1));
@@ -1028,9 +993,138 @@ function runNetworkSimulation(graph, focalId) {
       g.setAttribute("transform", `translate(${node.x.toFixed(1)} ${node.y.toFixed(1)})`);
       label.setAttribute("y", (radius + 12).toFixed(1));
     });
+  }
+
+  // Rescale + recenter the settled layout so it comfortably fills the canvas.
+  function fitToView() {
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    nodes.forEach((node) => {
+      minX = Math.min(minX, node.x - node.collide);
+      maxX = Math.max(maxX, node.x + node.collide);
+      minY = Math.min(minY, node.y - node.collide);
+      maxY = Math.max(maxY, node.y + node.collide);
+    });
+    const margin = 36;
+    const spanX = maxX - minX || 1;
+    const spanY = maxY - minY || 1;
+    let scale = Math.min((width - margin * 2) / spanX, (height - margin * 2) / spanY);
+    scale = Math.max(0.55, Math.min(scale, 1.25));
+    const boxCx = (minX + maxX) / 2;
+    const boxCy = (minY + maxY) / 2;
+    nodes.forEach((node) => {
+      node.x = cx + (node.x - boxCx) * scale;
+      node.y = cy + (node.y - boxCy) * scale;
+    });
+  }
+
+  function tick() {
+    alpha *= 0.99;
+
+    // Many-body repulsion (O(n^2), n <= ~41), scaled by node sizes.
+    for (let i = 0; i < n; i += 1) {
+      const a = nodes[i];
+      for (let j = i + 1; j < n; j += 1) {
+        const b = nodes[j];
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        let distSq = dx * dx + dy * dy;
+        if (distSq < 0.01) {
+          dx = (Math.random() - 0.5) * 0.5;
+          dy = (Math.random() - 0.5) * 0.5;
+          distSq = dx * dx + dy * dy;
+        }
+        const dist = Math.sqrt(distSq);
+        const force = (charge * (a.collide + b.collide) * alpha) / distSq;
+        const fx = (dx / dist) * force;
+        const fy = (dy / dist) * force;
+        a.vx += fx;
+        a.vy += fy;
+        b.vx -= fx;
+        b.vy -= fy;
+      }
+    }
+
+    // Springs along edges; heavier collaborations sit closer.
+    graph.edges.forEach((edge) => {
+      const a = edge.source;
+      const b = edge.target;
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+      const desired = baseLink / Math.sqrt(edge.weight);
+      const force = (dist - desired) * 0.045 * alpha;
+      const fx = (dx / dist) * force;
+      const fy = (dy / dist) * force;
+      a.vx += fx;
+      a.vy += fy;
+      b.vx -= fx;
+      b.vy -= fy;
+    });
+
+    // Gentle centering + focal pin, then integrate.
+    nodes.forEach((node) => {
+      if (node.fixed) {
+        node.vx = 0;
+        node.vy = 0;
+        return;
+      }
+      node.vx += (cx - node.x) * 0.01 * alpha;
+      node.vy += (cy - node.y) * 0.01 * alpha;
+      if (node.focal) {
+        node.vx += (cx - node.x) * 0.2;
+        node.vy += (cy - node.y) * 0.2;
+      }
+      node.vx *= 0.85;
+      node.vy *= 0.85;
+      node.x += node.vx;
+      node.y += node.vy;
+    });
+
+    // Hard collision resolution so nodes/labels never sit on top of each other.
+    for (let iter = 0; iter < 3; iter += 1) {
+      for (let i = 0; i < n; i += 1) {
+        const a = nodes[i];
+        for (let j = i + 1; j < n; j += 1) {
+          const b = nodes[j];
+          const minDist = a.collide + b.collide;
+          let dx = b.x - a.x;
+          let dy = b.y - a.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist === 0) {
+            dx = Math.random() - 0.5;
+            dy = Math.random() - 0.5;
+            dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+          }
+          if (dist < minDist) {
+            const push = (minDist - dist) / dist;
+            const ux = dx * push;
+            const uy = dy * push;
+            const aMove = a.fixed || a.focal ? 0 : b.fixed || b.focal ? 1 : 0.5;
+            const bMove = b.fixed || b.focal ? 0 : a.fixed || a.focal ? 1 : 0.5;
+            a.x -= ux * aMove;
+            a.y -= uy * aMove;
+            b.x += ux * bMove;
+            b.y += uy * bMove;
+          }
+        }
+      }
+    }
+
+    // Keep everyone inside the canvas.
+    nodes.forEach((node) => {
+      node.x = Math.max(node.collide, Math.min(width - node.collide, node.x));
+      node.y = Math.max(node.collide, Math.min(height - node.collide, node.y));
+    });
+
+    render();
 
     if (alpha > 0.02) {
       network.animationId = requestAnimationFrame(tick);
+    } else if (!fitted) {
+      fitted = true;
+      fitToView();
+      render();
+      network.animationId = null;
     } else {
       network.animationId = null;
     }
