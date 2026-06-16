@@ -953,8 +953,9 @@ function runNetworkSimulation(graph, focalId) {
     return { node, g, circle, label, radius: radiusFor(node) };
   });
 
-  // Label-aware collision radius so circles AND their name labels keep clear
-  // of each other. Measured once from the rendered text width.
+  // Label-aware minimum separation so names stay legible. Measured once from
+  // the rendered text width; used as a light post-step safeguard on top of the
+  // Fruchterman-Reingold layout.
   nodeEls.forEach((entry) => {
     let halfWidth;
     try {
@@ -968,19 +969,18 @@ function runNetworkSimulation(graph, focalId) {
     entry.node.collide = collide;
   });
 
-  // Degree drives link length: well-connected hubs sit a little closer.
-  const degree = new Map(graph.nodes.map((node) => [node.id, 0]));
-  graph.edges.forEach((edge) => {
-    degree.set(edge.source.id, degree.get(edge.source.id) + 1);
-    degree.set(edge.target.id, degree.get(edge.target.id) + 1);
-  });
-
   const nodes = graph.nodes;
   const n = nodes.length;
-  let alpha = 1;
   let fitted = false;
-  const baseLink = Math.max(54, Math.min(width, height) * 0.22);
-  const charge = 120;
+
+  // --- Fruchterman-Reingold (1991) parameters ---
+  // Ideal edge length k = C * sqrt(area / n).
+  const area = width * height;
+  const k = 0.72 * Math.sqrt(area / Math.max(n, 1));
+  const k2 = k * k;
+  // Temperature limits the per-iteration displacement and cools over time.
+  let temperature = Math.min(width, height) * 0.16;
+  const cooling = 0.965;
 
   function render() {
     edgeEls.forEach(({ edge, line }) => {
@@ -995,8 +995,15 @@ function runNetworkSimulation(graph, focalId) {
     });
   }
 
-  // Rescale + recenter the settled layout so it comfortably fills the canvas.
-  function fitToView() {
+  // After the layout cools: recenter on the focal author and scale to fill.
+  function finalize() {
+    const focal = nodes.find((node) => node.focal);
+    const ox = focal ? focal.x : cx;
+    const oy = focal ? focal.y : cy;
+    nodes.forEach((node) => {
+      node.x += cx - ox;
+      node.y += cy - oy;
+    });
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     nodes.forEach((node) => {
       minX = Math.min(minX, node.x - node.collide);
@@ -1005,130 +1012,126 @@ function runNetworkSimulation(graph, focalId) {
       maxY = Math.max(maxY, node.y + node.collide);
     });
     const margin = 36;
-    const spanX = maxX - minX || 1;
-    const spanY = maxY - minY || 1;
-    let scale = Math.min((width - margin * 2) / spanX, (height - margin * 2) / spanY);
+    let scale = Math.min(
+      (width - margin * 2) / (maxX - minX || 1),
+      (height - margin * 2) / (maxY - minY || 1)
+    );
     scale = Math.max(0.55, Math.min(scale, 1.25));
-    const boxCx = (minX + maxX) / 2;
-    const boxCy = (minY + maxY) / 2;
     nodes.forEach((node) => {
-      node.x = cx + (node.x - boxCx) * scale;
-      node.y = cy + (node.y - boxCy) * scale;
+      node.x = cx + (node.x - cx) * scale;
+      node.y = cy + (node.y - cy) * scale;
     });
   }
 
   function tick() {
-    alpha *= 0.99;
+    // Reset displacements.
+    nodes.forEach((node) => {
+      node.dx = 0;
+      node.dy = 0;
+    });
 
-    // Many-body repulsion (O(n^2), n <= ~41), scaled by node sizes.
+    // Repulsive forces between every pair: f_r(d) = k^2 / d.
     for (let i = 0; i < n; i += 1) {
-      const a = nodes[i];
+      const v = nodes[i];
       for (let j = i + 1; j < n; j += 1) {
-        const b = nodes[j];
-        let dx = a.x - b.x;
-        let dy = a.y - b.y;
-        let distSq = dx * dx + dy * dy;
-        if (distSq < 0.01) {
+        const u = nodes[j];
+        let dx = v.x - u.x;
+        let dy = v.y - u.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 0.01) {
           dx = (Math.random() - 0.5) * 0.5;
           dy = (Math.random() - 0.5) * 0.5;
-          distSq = dx * dx + dy * dy;
+          dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
         }
-        const dist = Math.sqrt(distSq);
-        const force = (charge * (a.collide + b.collide) * alpha) / distSq;
-        const fx = (dx / dist) * force;
-        const fy = (dy / dist) * force;
-        a.vx += fx;
-        a.vy += fy;
-        b.vx -= fx;
-        b.vy -= fy;
+        const rep = k2 / dist;
+        const ux = (dx / dist) * rep;
+        const uy = (dy / dist) * rep;
+        v.dx += ux;
+        v.dy += uy;
+        u.dx -= ux;
+        u.dy -= uy;
       }
     }
 
-    // Springs along edges; heavier collaborations sit closer.
+    // Attractive forces along edges: f_a(d) = d^2 / k.
+    // Scaled by sqrt(shared papers) so stronger collaborations pull tighter.
     graph.edges.forEach((edge) => {
-      const a = edge.source;
-      const b = edge.target;
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
+      const v = edge.target;
+      const u = edge.source;
+      let dx = v.x - u.x;
+      let dy = v.y - u.y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
-      const desired = baseLink / Math.sqrt(edge.weight);
-      const force = (dist - desired) * 0.045 * alpha;
-      const fx = (dx / dist) * force;
-      const fy = (dy / dist) * force;
-      a.vx += fx;
-      a.vy += fy;
-      b.vx -= fx;
-      b.vy -= fy;
+      const att = ((dist * dist) / k) * Math.sqrt(edge.weight);
+      const ux = (dx / dist) * att;
+      const uy = (dy / dist) * att;
+      v.dx -= ux;
+      v.dy -= uy;
+      u.dx += ux;
+      u.dy += uy;
     });
 
-    // Gentle centering + focal pin, then integrate.
+    // Limit displacement by the temperature, then apply.
     nodes.forEach((node) => {
-      if (node.fixed) {
-        node.vx = 0;
-        node.vy = 0;
-        return;
+      if (node.fixed) return;
+      const disp = Math.sqrt(node.dx * node.dx + node.dy * node.dy);
+      if (disp > 0) {
+        const limited = Math.min(disp, temperature);
+        node.x += (node.dx / disp) * limited;
+        node.y += (node.dy / disp) * limited;
       }
-      node.vx += (cx - node.x) * 0.01 * alpha;
-      node.vy += (cy - node.y) * 0.01 * alpha;
-      if (node.focal) {
-        node.vx += (cx - node.x) * 0.2;
-        node.vy += (cy - node.y) * 0.2;
-      }
-      node.vx *= 0.85;
-      node.vy *= 0.85;
-      node.x += node.vx;
-      node.y += node.vy;
-    });
-
-    // Hard collision resolution so nodes/labels never sit on top of each other.
-    for (let iter = 0; iter < 3; iter += 1) {
-      for (let i = 0; i < n; i += 1) {
-        const a = nodes[i];
-        for (let j = i + 1; j < n; j += 1) {
-          const b = nodes[j];
-          const minDist = a.collide + b.collide;
-          let dx = b.x - a.x;
-          let dy = b.y - a.y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist === 0) {
-            dx = Math.random() - 0.5;
-            dy = Math.random() - 0.5;
-            dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
-          }
-          if (dist < minDist) {
-            const push = (minDist - dist) / dist;
-            const ux = dx * push;
-            const uy = dy * push;
-            const aMove = a.fixed || a.focal ? 0 : b.fixed || b.focal ? 1 : 0.5;
-            const bMove = b.fixed || b.focal ? 0 : a.fixed || a.focal ? 1 : 0.5;
-            a.x -= ux * aMove;
-            a.y -= uy * aMove;
-            b.x += ux * bMove;
-            b.y += uy * bMove;
-          }
-        }
-      }
-    }
-
-    // Keep everyone inside the canvas.
-    nodes.forEach((node) => {
       node.x = Math.max(node.collide, Math.min(width - node.collide, node.x));
       node.y = Math.max(node.collide, Math.min(height - node.collide, node.y));
     });
 
+    // Light label-aware separation safeguard so names never overlap.
+    for (let i = 0; i < n; i += 1) {
+      const a = nodes[i];
+      for (let j = i + 1; j < n; j += 1) {
+        const b = nodes[j];
+        const minDist = a.collide + b.collide;
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist === 0) {
+          dx = Math.random() - 0.5;
+          dy = Math.random() - 0.5;
+          dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        }
+        if (dist < minDist) {
+          const push = (minDist - dist) / dist;
+          const mx = dx * push;
+          const my = dy * push;
+          const aMove = a.fixed ? 0 : b.fixed ? 1 : 0.5;
+          const bMove = b.fixed ? 0 : a.fixed ? 1 : 0.5;
+          a.x -= mx * aMove;
+          a.y -= my * aMove;
+          b.x += mx * bMove;
+          b.y += my * bMove;
+        }
+      }
+    }
+
+    temperature *= cooling;
     render();
 
-    if (alpha > 0.02) {
+    if (temperature > 0.6) {
       network.animationId = requestAnimationFrame(tick);
     } else if (!fitted) {
       fitted = true;
-      fitToView();
+      finalize();
       render();
       network.animationId = null;
     } else {
       network.animationId = null;
     }
   }
+
+  // Let dragging reheat the layout so neighbors reflow around the moved node.
+  network.reheat = () => {
+    fitted = true;
+    temperature = Math.max(temperature, Math.min(width, height) * 0.04);
+    if (!network.animationId) tick();
+  };
 
   tick();
 }
@@ -1154,8 +1157,7 @@ function enableNodeDrag(g, node, svg, width, height) {
     const point = toLocal(event);
     node.x = Math.max(24, Math.min(width - 24, point.x));
     node.y = Math.max(20, Math.min(height - 20, point.y));
-    node.vx = 0;
-    node.vy = 0;
+    if (typeof network.reheat === "function") network.reheat();
   };
 
   const onUp = () => {
@@ -1170,6 +1172,7 @@ function enableNodeDrag(g, node, svg, width, height) {
     dragging = true;
     moved = false;
     node.fixed = true;
+    if (typeof network.reheat === "function") network.reheat();
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
   });
