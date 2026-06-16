@@ -13,6 +13,8 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+from merge_author_aliases import merge_payload
+
 
 def normalize_name(value: str) -> str:
     asciiish = (
@@ -181,6 +183,11 @@ def main() -> None:
         "pairs": dict(sorted(pair_articles.items(), key=lambda item: item[0])),
     }
 
+    # Collapse author name variants that differ only by middle initials into a
+    # single person (e.g. "Krista J Li" + "Krista Li") so the conflict index is
+    # not fragmented across spellings.
+    merge_payload(payload, verbose=True)
+
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, ensure_ascii=True, separators=(",", ":"))
@@ -188,8 +195,8 @@ def main() -> None:
 
     print(f"Wrote {args.output}")
     print(
-        f"{len(authors):,} authors, {len(articles):,} articles, "
-        f"{len(pair_articles):,} coauthor pairs"
+        f"{payload['meta']['authorCount']:,} authors, {len(articles):,} articles, "
+        f"{payload['meta']['pairCount']:,} coauthor pairs"
     )
 
 

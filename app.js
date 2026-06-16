@@ -76,6 +76,11 @@ async function loadData() {
     data.authors.forEach((author) => {
       state.authorsByNorm.set(author.k, author);
       state.authorById.set(author.id, author);
+      // Merged name variants (e.g. "krista li" -> "Krista J Li") so any
+      // spelling resolves to the same person.
+      (author.al || []).forEach((alias) => {
+        if (!state.authorsByNorm.has(alias)) state.authorsByNorm.set(alias, author);
+      });
     });
     data.articles.forEach((article) => state.articlesById.set(article.id, article));
     setStatus(
