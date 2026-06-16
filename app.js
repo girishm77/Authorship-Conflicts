@@ -402,12 +402,21 @@ function renderLookup() {
   els.lookupOutput.className = "lookup-output ready";
   const summary = document.createElement("div");
   summary.className = "lookup-summary";
+  const head = document.createElement("div");
+  head.className = "lookup-summary-head";
   const title = document.createElement("strong");
   title.textContent = resolved.match.n;
+  const vizLink = document.createElement("button");
+  vizLink.type = "button";
+  vizLink.className = "viz-network-link";
+  vizLink.textContent = "visualize network";
+  vizLink.setAttribute("aria-label", `Visualize coauthor network for ${resolved.match.n}`);
+  vizLink.addEventListener("click", () => openNetworkPanel(resolved.match.id));
+  head.append(title, vizLink);
   const meta = document.createElement("div");
   meta.className = "lookup-meta";
   meta.textContent = `${resolved.match.c} UTD publication${resolved.match.c === 1 ? "" : "s"}, ${resolved.match.f}-${resolved.match.l}; ${authorAffiliationLabel(resolved.match)}`;
-  summary.append(title, meta);
+  summary.append(head, meta);
   els.lookupOutput.appendChild(summary);
 
   if (!coauthors.length) {
@@ -733,4 +742,341 @@ function debounce(fn, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(() => fn(...args), wait);
   };
+}
+
+/* ---------- Coauthor network visualization ---------- */
+
+const network = {
+  overlay: null,
+  svg: null,
+  animationId: null,
+  sim: null,
+};
+
+const NETWORK_MAX_COAUTHORS = 40;
+
+function openNetworkPanel(focalId) {
+  if (!state.data) return;
+  const graph = buildNetworkGraph(focalId, selectedMinYear());
+  ensureNetworkOverlay();
+  const focal = state.authorById.get(focalId);
+  network.titleEl.textContent = focal ? focal.n : "Coauthor network";
+  network.subtitleEl.textContent =
+    `${graph.nodes.length - 1} coauthor${graph.nodes.length - 1 === 1 ? "" : "s"} | ${windowLabel()} | line thickness = shared publications`;
+  network.overlay.hidden = false;
+  document.body.style.overflow = "hidden";
+  runNetworkSimulation(graph, focalId);
+}
+
+function closeNetworkPanel() {
+  if (network.animationId) cancelAnimationFrame(network.animationId);
+  network.animationId = null;
+  if (network.overlay) network.overlay.hidden = true;
+  document.body.style.overflow = "";
+}
+
+function buildNetworkGraph(focalId, minYear) {
+  const inWindow = (id) => {
+    const article = state.articlesById.get(id);
+    return article && (!minYear || article.y >= minYear);
+  };
+
+  const coauthors = getCoauthors(focalId)
+    .map((item) => ({
+      authorId: item.authorId,
+      count: item.articleIds.filter(inWindow).length,
+    }))
+    .filter((item) => item.count > 0)
+    .sort((left, right) => right.count - left.count)
+    .slice(0, NETWORK_MAX_COAUTHORS);
+
+  const idSet = new Set([focalId, ...coauthors.map((c) => c.authorId)]);
+  const ids = Array.from(idSet);
+  const countById = new Map(coauthors.map((c) => [c.authorId, c.count]));
+
+  const nodes = ids.map((id) => {
+    const author = state.authorById.get(id);
+    return {
+      id,
+      name: author ? author.n : String(id),
+      focal: id === focalId,
+      weight: id === focalId ? 0 : countById.get(id) || 0,
+      x: 0,
+      y: 0,
+      vx: 0,
+      vy: 0,
+    };
+  });
+  const nodeById = new Map(nodes.map((n) => [n.id, n]));
+
+  const edges = [];
+  for (let i = 0; i < ids.length; i += 1) {
+    for (let j = i + 1; j < ids.length; j += 1) {
+      const articleIds = state.data.pairs[pairKey(ids[i], ids[j])];
+      if (!articleIds) continue;
+      const weight = articleIds.filter(inWindow).length;
+      if (weight > 0) {
+        edges.push({ source: nodeById.get(ids[i]), target: nodeById.get(ids[j]), weight });
+      }
+    }
+  }
+  return { nodes, edges };
+}
+
+function ensureNetworkOverlay() {
+  if (network.overlay) return;
+  const overlay = document.createElement("div");
+  overlay.className = "network-overlay";
+  overlay.hidden = true;
+
+  const dialog = document.createElement("div");
+  dialog.className = "network-dialog";
+  dialog.setAttribute("role", "dialog");
+  dialog.setAttribute("aria-modal", "true");
+  dialog.setAttribute("aria-label", "Coauthor network");
+
+  const header = document.createElement("div");
+  header.className = "network-header";
+  const titles = document.createElement("div");
+  const title = document.createElement("strong");
+  title.className = "network-title";
+  const subtitle = document.createElement("span");
+  subtitle.className = "network-subtitle";
+  titles.append(title, subtitle);
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "network-close";
+  closeBtn.setAttribute("aria-label", "Close network view");
+  closeBtn.textContent = "Close";
+  closeBtn.addEventListener("click", closeNetworkPanel);
+  header.append(titles, closeBtn);
+
+  const canvas = document.createElement("div");
+  canvas.className = "network-canvas";
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "network-svg");
+  canvas.appendChild(svg);
+
+  dialog.append(header, canvas);
+  overlay.appendChild(dialog);
+  document.body.appendChild(overlay);
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closeNetworkPanel();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !overlay.hidden) closeNetworkPanel();
+  });
+
+  network.overlay = overlay;
+  network.dialog = dialog;
+  network.svg = svg;
+  network.canvas = canvas;
+  network.titleEl = title;
+  network.subtitleEl = subtitle;
+}
+
+function runNetworkSimulation(graph, focalId) {
+  if (network.animationId) cancelAnimationFrame(network.animationId);
+  const svg = network.svg;
+  svg.replaceChildren();
+
+  const rect = network.canvas.getBoundingClientRect();
+  const width = Math.max(rect.width || 720, 320);
+  const height = Math.max(rect.height || 520, 320);
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+  const cx = width / 2;
+  const cy = height / 2;
+  const maxWeight = graph.edges.reduce((max, edge) => Math.max(max, edge.weight), 1);
+  const maxNodeWeight = graph.nodes.reduce((max, node) => Math.max(max, node.weight), 1);
+
+  // Seed positions: focal at center, others on a ring.
+  const ring = graph.nodes.filter((node) => !node.focal);
+  ring.forEach((node, index) => {
+    const angle = (index / Math.max(ring.length, 1)) * Math.PI * 2;
+    const radius = Math.min(width, height) * 0.34;
+    node.x = cx + Math.cos(angle) * radius;
+    node.y = cy + Math.sin(angle) * radius;
+  });
+  graph.nodes.forEach((node) => {
+    if (node.focal) {
+      node.x = cx;
+      node.y = cy;
+    }
+  });
+
+  const radiusFor = (node) =>
+    node.focal ? 13 : 6 + (node.weight / maxNodeWeight) * 9;
+
+  // Build SVG elements.
+  const edgeEls = graph.edges.map((edge) => {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    const thickness = 1 + (edge.weight / maxWeight) * 6;
+    line.setAttribute("stroke-width", thickness.toFixed(2));
+    line.setAttribute("class", edge.weight > 1 ? "network-edge strong" : "network-edge");
+    const sharedTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    sharedTitle.textContent = `${edge.source.name} - ${edge.target.name}: ${edge.weight} shared publication${edge.weight === 1 ? "" : "s"}`;
+    line.appendChild(sharedTitle);
+    svg.appendChild(line);
+    return { edge, line };
+  });
+
+  const nodeEls = graph.nodes.map((node) => {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("class", node.focal ? "network-node focal" : "network-node");
+    g.style.cursor = "pointer";
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("r", radiusFor(node).toFixed(2));
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("class", "network-label");
+    label.setAttribute("text-anchor", "middle");
+    label.textContent = node.name;
+    const nodeTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    nodeTitle.textContent = node.focal
+      ? node.name
+      : `${node.name}: ${node.weight} shared publication${node.weight === 1 ? "" : "s"}`;
+    g.append(circle, label, nodeTitle);
+    svg.appendChild(g);
+
+    if (!node.focal) {
+      g.addEventListener("click", (event) => {
+        if (g.dataset.dragged === "1") {
+          g.dataset.dragged = "0";
+          return;
+        }
+        event.stopPropagation();
+        openNetworkPanel(node.id);
+      });
+    }
+    enableNodeDrag(g, node, svg, width, height);
+    return { node, g, circle, label, radius: radiusFor(node) };
+  });
+
+  let alpha = 1;
+  const idealLength = Math.min(width, height) * 0.16;
+
+  function tick() {
+    alpha *= 0.985;
+    // Repulsion (O(n^2), n <= ~41).
+    for (let i = 0; i < graph.nodes.length; i += 1) {
+      const a = graph.nodes[i];
+      for (let j = i + 1; j < graph.nodes.length; j += 1) {
+        const b = graph.nodes[j];
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        let distSq = dx * dx + dy * dy;
+        if (distSq < 0.01) {
+          dx = (Math.random() - 0.5) * 0.5;
+          dy = (Math.random() - 0.5) * 0.5;
+          distSq = dx * dx + dy * dy;
+        }
+        const dist = Math.sqrt(distSq);
+        const force = (3200 * alpha) / distSq;
+        const fx = (dx / dist) * force;
+        const fy = (dy / dist) * force;
+        a.vx += fx;
+        a.vy += fy;
+        b.vx -= fx;
+        b.vy -= fy;
+      }
+    }
+    // Springs along edges.
+    graph.edges.forEach((edge) => {
+      const a = edge.source;
+      const b = edge.target;
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+      const desired = idealLength / Math.sqrt(edge.weight);
+      const force = (dist - desired) * 0.05 * alpha;
+      const fx = (dx / dist) * force;
+      const fy = (dy / dist) * force;
+      a.vx += fx;
+      a.vy += fy;
+      b.vx -= fx;
+      b.vy -= fy;
+    });
+    // Centering + integrate.
+    graph.nodes.forEach((node) => {
+      if (node.fixed) {
+        node.vx = 0;
+        node.vy = 0;
+        return;
+      }
+      node.vx += (cx - node.x) * 0.012 * alpha;
+      node.vy += (cy - node.y) * 0.012 * alpha;
+      if (node.focal) {
+        node.vx += (cx - node.x) * 0.18;
+        node.vy += (cy - node.y) * 0.18;
+      }
+      node.vx *= 0.82;
+      node.vy *= 0.82;
+      node.x += node.vx;
+      node.y += node.vy;
+      node.x = Math.max(24, Math.min(width - 24, node.x));
+      node.y = Math.max(20, Math.min(height - 20, node.y));
+    });
+
+    edgeEls.forEach(({ edge, line }) => {
+      line.setAttribute("x1", edge.source.x.toFixed(1));
+      line.setAttribute("y1", edge.source.y.toFixed(1));
+      line.setAttribute("x2", edge.target.x.toFixed(1));
+      line.setAttribute("y2", edge.target.y.toFixed(1));
+    });
+    nodeEls.forEach(({ node, g, label, radius }) => {
+      g.setAttribute("transform", `translate(${node.x.toFixed(1)} ${node.y.toFixed(1)})`);
+      label.setAttribute("y", (radius + 12).toFixed(1));
+    });
+
+    if (alpha > 0.02) {
+      network.animationId = requestAnimationFrame(tick);
+    } else {
+      network.animationId = null;
+    }
+  }
+
+  tick();
+}
+
+function enableNodeDrag(g, node, svg, width, height) {
+  let dragging = false;
+  let moved = false;
+
+  const toLocal = (event) => {
+    const rect = svg.getBoundingClientRect();
+    const scaleX = width / rect.width;
+    const scaleY = height / rect.height;
+    return {
+      x: (event.clientX - rect.left) * scaleX,
+      y: (event.clientY - rect.top) * scaleY,
+    };
+  };
+
+  const onMove = (event) => {
+    if (!dragging) return;
+    moved = true;
+    g.dataset.dragged = "1";
+    const point = toLocal(event);
+    node.x = Math.max(24, Math.min(width - 24, point.x));
+    node.y = Math.max(20, Math.min(height - 20, point.y));
+    node.vx = 0;
+    node.vy = 0;
+  };
+
+  const onUp = () => {
+    dragging = false;
+    node.fixed = false;
+    window.removeEventListener("pointermove", onMove);
+    window.removeEventListener("pointerup", onUp);
+  };
+
+  g.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    dragging = true;
+    moved = false;
+    node.fixed = true;
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  });
 }

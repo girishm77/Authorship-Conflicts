@@ -553,6 +553,150 @@ textarea:focus {
   font-size: 15px;
 }
 
+.lookup-summary-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.viz-network-link {
+  flex: 0 0 auto;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--teal-dark);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 760;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.viz-network-link:hover,
+.viz-network-link:focus {
+  color: var(--teal);
+}
+
+/* Coauthor network overlay */
+.network-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(23, 32, 38, 0.45);
+}
+
+.network-overlay[hidden] {
+  display: none;
+}
+
+.network-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(960px, 100%);
+  height: min(680px, 90vh);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 24px 60px rgba(23, 32, 38, 0.28);
+  overflow: hidden;
+}
+
+.network-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.network-title {
+  display: block;
+  font-size: 17px;
+  font-weight: 740;
+  line-height: 1.2;
+}
+
+.network-subtitle {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.network-close {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 720;
+}
+
+.network-close:hover {
+  border-color: var(--teal);
+}
+
+.network-canvas {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.network-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.network-edge {
+  stroke: var(--line-strong);
+  stroke-opacity: 0.75;
+  stroke-linecap: round;
+}
+
+.network-edge.strong {
+  stroke: var(--teal);
+  stroke-opacity: 0.55;
+}
+
+.network-node circle {
+  fill: var(--blue);
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+
+.network-node.focal circle {
+  fill: var(--teal);
+  stroke-width: 2.5;
+}
+
+.network-label {
+  fill: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: #ffffff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.network-node.focal .network-label {
+  font-size: 12px;
+  font-weight: 760;
+}
+
 .lookup-item {
   padding: 11px 12px;
 }
