@@ -94,6 +94,7 @@ h2 {
 .data-status {
   display: inline-flex;
   align-items: center;
+  margin-top: 78px;
   min-height: 38px;
   max-width: 520px;
   padding: 9px 12px;
