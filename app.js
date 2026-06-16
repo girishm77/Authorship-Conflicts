@@ -971,16 +971,6 @@ function runNetworkSimulation(graph, focalId) {
 
   const nodes = graph.nodes;
   const n = nodes.length;
-  let fitted = false;
-
-  // --- Fruchterman-Reingold (1991) parameters ---
-  // Ideal edge length k = C * sqrt(area / n).
-  const area = width * height;
-  const k = 0.72 * Math.sqrt(area / Math.max(n, 1));
-  const k2 = k * k;
-  // Temperature limits the per-iteration displacement and cools over time.
-  let temperature = Math.min(width, height) * 0.16;
-  const cooling = 0.965;
 
   function render() {
     edgeEls.forEach(({ edge, line }) => {
@@ -994,8 +984,9 @@ function runNetworkSimulation(graph, focalId) {
       label.setAttribute("y", (radius + 12).toFixed(1));
     });
   }
+  network.render = render;
 
-  // After the layout cools: recenter on the focal author and scale to fill.
+  // Recenter the solved layout on the focal author and scale it to fill.
   function finalize() {
     const focal = nodes.find((node) => node.focal);
     const ox = focal ? focal.x : cx;
@@ -1023,117 +1014,143 @@ function runNetworkSimulation(graph, focalId) {
     });
   }
 
-  function tick() {
-    // Reset displacements.
-    nodes.forEach((node) => {
-      node.dx = 0;
-      node.dy = 0;
-    });
+  // --- Solve Fruchterman-Reingold to convergence up front (no rendering) ---
+  // Ideal edge length k = C * sqrt(area / n); the layout is solved silently and
+  // then revealed with one smooth transition, so the frame-by-frame cooling is
+  // never shown on screen.
+  function solveLayout() {
+    const area = width * height;
+    const k = 0.72 * Math.sqrt(area / Math.max(n, 1));
+    const k2 = k * k;
+    let temperature = Math.min(width, height) * 0.16;
+    const cooling = 0.94;
+    const iterations = 320;
 
-    // Repulsive forces between every pair: f_r(d) = k^2 / d.
-    for (let i = 0; i < n; i += 1) {
-      const v = nodes[i];
-      for (let j = i + 1; j < n; j += 1) {
-        const u = nodes[j];
-        let dx = v.x - u.x;
-        let dy = v.y - u.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 0.01) {
-          dx = (Math.random() - 0.5) * 0.5;
-          dy = (Math.random() - 0.5) * 0.5;
-          dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+    for (let step = 0; step < iterations; step += 1) {
+      nodes.forEach((node) => {
+        node.dx = 0;
+        node.dy = 0;
+      });
+
+      // Repulsion between every pair: f_r(d) = k^2 / d.
+      for (let i = 0; i < n; i += 1) {
+        const v = nodes[i];
+        for (let j = i + 1; j < n; j += 1) {
+          const u = nodes[j];
+          let dx = v.x - u.x;
+          let dy = v.y - u.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 0.01) {
+            dx = (Math.random() - 0.5) * 0.5;
+            dy = (Math.random() - 0.5) * 0.5;
+            dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+          }
+          const rep = k2 / dist;
+          const ux = (dx / dist) * rep;
+          const uy = (dy / dist) * rep;
+          v.dx += ux;
+          v.dy += uy;
+          u.dx -= ux;
+          u.dy -= uy;
         }
-        const rep = k2 / dist;
-        const ux = (dx / dist) * rep;
-        const uy = (dy / dist) * rep;
-        v.dx += ux;
-        v.dy += uy;
-        u.dx -= ux;
-        u.dy -= uy;
       }
+
+      // Attraction along edges: f_a(d) = d^2 / k, scaled by sqrt(shared papers).
+      graph.edges.forEach((edge) => {
+        const v = edge.target;
+        const u = edge.source;
+        const dx = v.x - u.x;
+        const dy = v.y - u.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        const att = ((dist * dist) / k) * Math.sqrt(edge.weight);
+        const ux = (dx / dist) * att;
+        const uy = (dy / dist) * att;
+        v.dx -= ux;
+        v.dy -= uy;
+        u.dx += ux;
+        u.dy += uy;
+      });
+
+      // Limit displacement by temperature, then apply and clamp to the frame.
+      nodes.forEach((node) => {
+        const disp = Math.sqrt(node.dx * node.dx + node.dy * node.dy);
+        if (disp > 0) {
+          const limited = Math.min(disp, temperature);
+          node.x += (node.dx / disp) * limited;
+          node.y += (node.dy / disp) * limited;
+        }
+        node.x = Math.max(node.collide, Math.min(width - node.collide, node.x));
+        node.y = Math.max(node.collide, Math.min(height - node.collide, node.y));
+      });
+
+      // Label-aware separation safeguard so names never overlap.
+      for (let i = 0; i < n; i += 1) {
+        const a = nodes[i];
+        for (let j = i + 1; j < n; j += 1) {
+          const b = nodes[j];
+          const minDist = a.collide + b.collide;
+          let dx = b.x - a.x;
+          let dy = b.y - a.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist === 0) {
+            dx = Math.random() - 0.5;
+            dy = Math.random() - 0.5;
+            dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+          }
+          if (dist < minDist) {
+            const push = ((minDist - dist) / dist) * 0.5;
+            const mx = dx * push;
+            const my = dy * push;
+            a.x -= mx;
+            a.y -= my;
+            b.x += mx;
+            b.y += my;
+          }
+        }
+      }
+
+      temperature *= cooling;
     }
+  }
 
-    // Attractive forces along edges: f_a(d) = d^2 / k.
-    // Scaled by sqrt(shared papers) so stronger collaborations pull tighter.
-    graph.edges.forEach((edge) => {
-      const v = edge.target;
-      const u = edge.source;
-      let dx = v.x - u.x;
-      let dy = v.y - u.y;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
-      const att = ((dist * dist) / k) * Math.sqrt(edge.weight);
-      const ux = (dx / dist) * att;
-      const uy = (dy / dist) * att;
-      v.dx -= ux;
-      v.dy -= uy;
-      u.dx += ux;
-      u.dy += uy;
-    });
+  // Capture seed positions, solve silently, then ease from seed -> solved.
+  nodes.forEach((node) => {
+    node.sx = node.x;
+    node.sy = node.y;
+  });
+  solveLayout();
+  finalize();
+  nodes.forEach((node) => {
+    node.tx = node.x;
+    node.ty = node.y;
+    // Start the reveal from the seed layout.
+    node.x = node.sx;
+    node.y = node.sy;
+  });
 
-    // Limit displacement by the temperature, then apply.
+  const duration = 760;
+  const startTime = (typeof performance !== "undefined" ? performance.now() : Date.now());
+  const easeInOutCubic = (t) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  function animateIntro(now) {
+    const elapsed = (now || Date.now()) - startTime;
+    const progress = Math.min(1, elapsed / duration);
+    const eased = easeInOutCubic(progress);
     nodes.forEach((node) => {
-      if (node.fixed) return;
-      const disp = Math.sqrt(node.dx * node.dx + node.dy * node.dy);
-      if (disp > 0) {
-        const limited = Math.min(disp, temperature);
-        node.x += (node.dx / disp) * limited;
-        node.y += (node.dy / disp) * limited;
-      }
-      node.x = Math.max(node.collide, Math.min(width - node.collide, node.x));
-      node.y = Math.max(node.collide, Math.min(height - node.collide, node.y));
+      node.x = node.sx + (node.tx - node.sx) * eased;
+      node.y = node.sy + (node.ty - node.sy) * eased;
     });
-
-    // Light label-aware separation safeguard so names never overlap.
-    for (let i = 0; i < n; i += 1) {
-      const a = nodes[i];
-      for (let j = i + 1; j < n; j += 1) {
-        const b = nodes[j];
-        const minDist = a.collide + b.collide;
-        let dx = b.x - a.x;
-        let dy = b.y - a.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist === 0) {
-          dx = Math.random() - 0.5;
-          dy = Math.random() - 0.5;
-          dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
-        }
-        if (dist < minDist) {
-          const push = (minDist - dist) / dist;
-          const mx = dx * push;
-          const my = dy * push;
-          const aMove = a.fixed ? 0 : b.fixed ? 1 : 0.5;
-          const bMove = b.fixed ? 0 : a.fixed ? 1 : 0.5;
-          a.x -= mx * aMove;
-          a.y -= my * aMove;
-          b.x += mx * bMove;
-          b.y += my * bMove;
-        }
-      }
-    }
-
-    temperature *= cooling;
     render();
-
-    if (temperature > 0.6) {
-      network.animationId = requestAnimationFrame(tick);
-    } else if (!fitted) {
-      fitted = true;
-      finalize();
-      render();
-      network.animationId = null;
+    if (progress < 1) {
+      network.animationId = requestAnimationFrame(animateIntro);
     } else {
       network.animationId = null;
     }
   }
 
-  // Let dragging reheat the layout so neighbors reflow around the moved node.
-  network.reheat = () => {
-    fitted = true;
-    temperature = Math.max(temperature, Math.min(width, height) * 0.04);
-    if (!network.animationId) tick();
-  };
-
-  tick();
+  render();
+  network.animationId = requestAnimationFrame(animateIntro);
 }
 
 function enableNodeDrag(g, node, svg, width, height) {
@@ -1157,7 +1174,7 @@ function enableNodeDrag(g, node, svg, width, height) {
     const point = toLocal(event);
     node.x = Math.max(24, Math.min(width - 24, point.x));
     node.y = Math.max(20, Math.min(height - 20, point.y));
-    if (typeof network.reheat === "function") network.reheat();
+    if (typeof network.render === "function") network.render();
   };
 
   const onUp = () => {
@@ -1172,7 +1189,11 @@ function enableNodeDrag(g, node, svg, width, height) {
     dragging = true;
     moved = false;
     node.fixed = true;
-    if (typeof network.reheat === "function") network.reheat();
+    // Stop any in-flight reveal transition so the drag takes over cleanly.
+    if (network.animationId) {
+      cancelAnimationFrame(network.animationId);
+      network.animationId = null;
+    }
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
   });
