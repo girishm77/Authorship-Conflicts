@@ -182,7 +182,7 @@ h2 {
 
 .right-column {
   display: grid;
-  gap: 16px;
+  gap: 32px;
   align-self: start;
 }
 
