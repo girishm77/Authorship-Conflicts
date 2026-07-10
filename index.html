@@ -28,7 +28,8 @@
       <section class="panel input-panel" aria-label="Screening inputs">
         <div class="panel-heading">
           <div>
-            <p class="eyebrow">Screen</p>
+            <p class="eyebrow">Step 1</p>
+            <h2>Enter information</h2>
           </div>
           <select id="windowSelect" aria-label="Conflict window">
             <option value="all">All UTD years</option>
@@ -69,8 +70,8 @@
       <section class="panel results-panel" aria-labelledby="resultsTitle">
         <div class="panel-heading">
           <div>
-            <p class="eyebrow">Results</p>
-            <h2 id="resultsTitle">Conflict review</h2>
+            <p class="eyebrow">Step 2</p>
+            <h2 id="resultsTitle">Review conflicts</h2>
           </div>
           <div class="tab-row" role="tablist" aria-label="Result filter">
             <button class="tab active" type="button" data-filter="all">All</button>
@@ -106,7 +107,7 @@
         </div>
 
         <div id="resultsEmpty" class="empty-state">
-          Enter authors and candidate reviewers, then run a conflict check.
+          Complete Step 1, then run a conflict check to review Step 2.
         </div>
         <div id="resultsList" class="results-list" hidden></div>
       </section>
