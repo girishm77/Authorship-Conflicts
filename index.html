@@ -67,65 +67,67 @@
         </div>
       </section>
 
-      <section class="panel results-panel" aria-labelledby="resultsTitle">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">Step 2</p>
-            <h2 id="resultsTitle">Review conflicts</h2>
-          </div>
-          <div class="tab-row" role="tablist" aria-label="Result filter">
-            <button class="tab active" type="button" data-filter="all">All</button>
-            <button class="tab" type="button" data-filter="conflicts">Conflicts</button>
-            <button class="tab" type="button" data-filter="unresolved">Unresolved</button>
-          </div>
-        </div>
-
-        <div class="metrics" aria-label="Screening summary">
-          <div class="metric">
-            <strong id="metricConflicts">0</strong>
-            <span>Conflicts</span>
-          </div>
-          <div class="metric">
-            <strong id="metricClear">0</strong>
-            <span>Clear reviewers</span>
-          </div>
-          <div class="metric">
-            <strong id="metricUnresolved">0</strong>
-            <span>Unresolved names</span>
-          </div>
-        </div>
-
-        <div id="decisionPanel" class="decision-panel" hidden aria-live="polite">
-          <div class="decision-head">
-            <span id="decisionBadge" class="badge info">Decision</span>
+      <div class="right-column">
+        <section class="panel results-panel" aria-labelledby="resultsTitle">
+          <div class="panel-heading">
             <div>
-              <strong id="decisionTitle">Resolve a name to see the assignment decision.</strong>
-              <span id="decisionDetail"></span>
+              <p class="eyebrow">Step 2</p>
+              <h2 id="resultsTitle">Review conflicts</h2>
+            </div>
+            <div class="tab-row" role="tablist" aria-label="Result filter">
+              <button class="tab active" type="button" data-filter="all">All</button>
+              <button class="tab" type="button" data-filter="conflicts">Conflicts</button>
+              <button class="tab" type="button" data-filter="unresolved">Unresolved</button>
             </div>
           </div>
-          <div id="decisionEvidence" class="decision-evidence"></div>
-        </div>
 
-        <div id="resultsEmpty" class="empty-state">
-          Complete Step 1, then run a conflict check to review Step 2.
-        </div>
-        <div id="resultsList" class="results-list" hidden></div>
-      </section>
+          <div class="metrics" aria-label="Screening summary">
+            <div class="metric">
+              <strong id="metricConflicts">0</strong>
+              <span>Conflicts</span>
+            </div>
+            <div class="metric">
+              <strong id="metricClear">0</strong>
+              <span>Clear reviewers</span>
+            </div>
+            <div class="metric">
+              <strong id="metricUnresolved">0</strong>
+              <span>Unresolved names</span>
+            </div>
+          </div>
 
-      <section class="panel lookup-panel" aria-label="Author lookup">
-        <button id="lookupFocus" class="lookup-trigger" type="button">
-          Search by author to look up all co-authors
-        </button>
+          <div id="decisionPanel" class="decision-panel" hidden aria-live="polite">
+            <div class="decision-head">
+              <span id="decisionBadge" class="badge info">Decision</span>
+              <div>
+                <strong id="decisionTitle">Resolve a name to see the assignment decision.</strong>
+                <span id="decisionDetail"></span>
+              </div>
+            </div>
+            <div id="decisionEvidence" class="decision-evidence"></div>
+          </div>
 
-        <label class="field compact">
-          <span>Inspect author</span>
-          <input id="lookupInput" type="search" spellcheck="false" autocomplete="off" placeholder="Type an author name">
-        </label>
+          <div id="resultsEmpty" class="empty-state">
+            Complete Step 1, then run a conflict check to review Step 2.
+          </div>
+          <div id="resultsList" class="results-list" hidden></div>
+        </section>
 
-        <div id="lookupOutput" class="lookup-output">
-          Search an author to view recent UTD coauthors.
-        </div>
-      </section>
+        <section class="panel lookup-panel" aria-label="Author lookup">
+          <button id="lookupFocus" class="lookup-trigger" type="button">
+            Search by author to look up all co-authors
+          </button>
+
+          <label class="field compact">
+            <span>Inspect author</span>
+            <input id="lookupInput" type="search" spellcheck="false" autocomplete="off" placeholder="Type an author name">
+          </label>
+
+          <div id="lookupOutput" class="lookup-output">
+            Search an author to view recent UTD coauthors.
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer" id="siteFooter">

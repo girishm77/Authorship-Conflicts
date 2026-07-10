@@ -180,6 +180,12 @@ h2 {
   align-items: start;
 }
 
+.right-column {
+  display: grid;
+  gap: 16px;
+  align-self: start;
+}
+
 .panel {
   min-width: 0;
   border: 1px solid var(--line);
@@ -195,11 +201,8 @@ h2 {
 }
 
 .lookup-panel {
-  grid-column: 2 / 3;
-  justify-self: stretch;
   display: grid;
   gap: 14px;
-  width: 100%;
 }
 
 .panel-heading {
@@ -813,8 +816,8 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .lookup-panel {
-    grid-column: auto;
+  .right-column {
+    gap: 16px;
   }
 
   .metrics {
