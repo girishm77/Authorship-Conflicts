@@ -40,6 +40,7 @@ function cacheElements() {
     "decisionEvidence",
     "resultsEmpty",
     "resultsList",
+    "lookupFocus",
     "lookupInput",
     "lookupOutput",
     "siteFooter",
@@ -63,6 +64,10 @@ function bindEvents() {
       els.tabs.forEach((item) => item.classList.toggle("active", item === tab));
       renderResults();
     });
+  });
+  els.lookupFocus.addEventListener("click", () => {
+    els.lookupInput.focus();
+    els.lookupInput.select();
   });
   els.lookupInput.addEventListener("input", debounce(renderLookup, 180));
 }

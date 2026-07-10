@@ -175,7 +175,7 @@ h2 {
 
 .dashboard {
   display: grid;
-  grid-template-columns: minmax(300px, 0.95fr) minmax(420px, 1.35fr) minmax(300px, 0.9fr);
+  grid-template-columns: minmax(300px, 0.95fr) minmax(420px, 1.35fr);
   gap: 16px;
   align-items: start;
 }
@@ -192,6 +192,14 @@ h2 {
 .results-panel,
 .lookup-panel {
   padding: 18px;
+}
+
+.lookup-panel {
+  grid-column: 1 / -1;
+  justify-self: center;
+  display: grid;
+  gap: 14px;
+  width: min(760px, 100%);
 }
 
 .panel-heading {
@@ -252,8 +260,19 @@ textarea:focus {
   font-weight: 700;
 }
 
+.field-note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .field.compact {
   margin-bottom: 12px;
+}
+
+.lookup-panel .field.compact {
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .button-row,
@@ -311,6 +330,29 @@ textarea:focus {
 .button:not(:disabled):hover,
 .tab:hover {
   border-color: var(--teal);
+}
+
+.lookup-trigger {
+  display: inline-flex;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(15, 118, 110, 0.28);
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal-dark);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 760;
+  text-align: center;
+}
+
+.lookup-trigger:hover,
+.lookup-trigger:focus {
+  border-color: var(--teal);
+  background: rgba(15, 118, 110, 0.14);
 }
 
 .tab {
@@ -736,10 +778,6 @@ textarea:focus {
 @media (max-width: 1120px) {
   .dashboard {
     grid-template-columns: minmax(300px, 0.95fr) minmax(420px, 1.2fr);
-  }
-
-  .lookup-panel {
-    grid-column: 1 / -1;
   }
 }
 

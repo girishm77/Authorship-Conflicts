@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Author-Reviewer Conflict Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=20260710-visits">
-    <script src="app.js?v=20260616-fr2" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260710-lookup-bottom">
+    <script src="app.js?v=20260710-lookup-bottom" defer></script>
   </head>
   <body>
     <header class="app-header">
@@ -41,11 +41,13 @@
         <label class="field">
           <span>Submission authors</span>
           <textarea id="submissionAuthors" rows="8" spellcheck="false" placeholder="One author per line, or comma separated"></textarea>
+          <small class="field-note">First names are enough. The app will suggest choices. You can also enter multiple names with commas.</small>
         </label>
 
         <label class="field">
           <span>Candidate reviewers</span>
           <textarea id="candidateReviewers" rows="8" spellcheck="false" placeholder="One reviewer per line, or comma separated"></textarea>
+          <small class="field-note">First names are enough. The app will suggest choices. You can also enter multiple names with commas.</small>
         </label>
 
         <div class="button-row">
@@ -109,13 +111,10 @@
         <div id="resultsList" class="results-list" hidden></div>
       </section>
 
-      <section class="panel lookup-panel" aria-labelledby="lookupTitle">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">Lookup</p>
-            <h2 id="lookupTitle">Author network</h2>
-          </div>
-        </div>
+      <section class="panel lookup-panel" aria-label="Author lookup">
+        <button id="lookupFocus" class="lookup-trigger" type="button">
+          Search by author to look up all co-authors
+        </button>
 
         <label class="field compact">
           <span>Inspect author</span>
