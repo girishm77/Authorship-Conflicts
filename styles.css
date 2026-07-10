@@ -182,7 +182,7 @@ h2 {
 
 .right-column {
   display: grid;
-  gap: 32px;
+  gap: 48px;
   align-self: start;
 }
 
@@ -623,9 +623,10 @@ textarea:focus {
 
 .lookup-summary-head {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .viz-network-link {
