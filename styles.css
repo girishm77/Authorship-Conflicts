@@ -195,11 +195,11 @@ h2 {
 }
 
 .lookup-panel {
-  grid-column: 1 / -1;
-  justify-self: center;
+  grid-column: 2 / 3;
+  justify-self: stretch;
   display: grid;
   gap: 14px;
-  width: min(760px, 100%);
+  width: 100%;
 }
 
 .panel-heading {
@@ -811,6 +811,10 @@ textarea:focus {
 
   .dashboard {
     grid-template-columns: 1fr;
+  }
+
+  .lookup-panel {
+    grid-column: auto;
   }
 
   .metrics {
