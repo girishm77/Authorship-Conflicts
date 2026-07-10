@@ -92,6 +92,22 @@ h2 {
   text-transform: uppercase;
 }
 
+.data-source {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-muted, #6b7280);
+  line-height: 1.4;
+}
+
+.data-source a {
+  color: var(--teal-dark);
+  text-decoration: none;
+}
+
+.data-source a:hover {
+  text-decoration: underline;
+}
+
 .data-status {
   display: inline-flex;
   align-items: center;
