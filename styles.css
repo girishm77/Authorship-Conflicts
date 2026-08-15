@@ -775,6 +775,32 @@ textarea:focus {
   margin-bottom: 3px;
 }
 
+.lookup-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.lookup-item-head strong {
+  margin-bottom: 0;
+}
+
+.lookup-item.historical {
+  opacity: 0.72;
+  background: var(--bg);
+}
+
+.lookup-section-label {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
 .site-footer {
   padding: 16px 0 28px;
 }

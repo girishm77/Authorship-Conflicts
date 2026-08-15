@@ -384,25 +384,27 @@ function renderLookup() {
   }
 
   const minYear = selectedMinYear();
-  const coauthors = getCoauthors(resolved.match.id)
-    .map((item) => {
-      const articles = item.articleIds
-        .map((id) => state.articlesById.get(id))
-        .filter(Boolean)
-        .sort((left, right) => right.y - left.y || left.t.localeCompare(right.t));
-      const windowArticles = minYear
-        ? articles.filter((article) => article.y >= minYear)
-        : articles;
-      return {
-        author: state.authorById.get(item.authorId),
-        articles,
-        windowArticles,
-        latestYear: articles[0]?.y || 0,
-      };
-    })
+  const allCoauthors = getCoauthors(resolved.match.id).map((item) => {
+    const articles = item.articleIds
+      .map((id) => state.articlesById.get(id))
+      .filter(Boolean)
+      .sort((left, right) => right.y - left.y || left.t.localeCompare(right.t));
+    const windowArticles = minYear
+      ? articles.filter((article) => article.y >= minYear)
+      : articles;
+    return {
+      author: state.authorById.get(item.authorId),
+      articles,
+      windowArticles,
+      latestYear: articles[0]?.y || 0,
+    };
+  });
+  const coauthors = allCoauthors
     .filter((item) => item.windowArticles.length)
-    .sort((left, right) => right.latestYear - left.latestYear || right.windowArticles.length - left.windowArticles.length)
-    .slice(0, 50);
+    .sort((left, right) => right.latestYear - left.latestYear || right.windowArticles.length - left.windowArticles.length);
+  const historicalCoauthors = allCoauthors
+    .filter((item) => !item.windowArticles.length)
+    .sort((left, right) => right.latestYear - left.latestYear || right.articles.length - left.articles.length);
 
   els.lookupOutput.className = "lookup-output ready";
   const summary = document.createElement("div");
@@ -424,25 +426,56 @@ function renderLookup() {
   summary.append(head, meta);
   els.lookupOutput.appendChild(summary);
 
+  if (!coauthors.length && !historicalCoauthors.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "No coauthors found.";
+    els.lookupOutput.appendChild(empty);
+    return;
+  }
+
   if (!coauthors.length) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
     empty.textContent = "No coauthors found in the selected window.";
     els.lookupOutput.appendChild(empty);
-    return;
   }
 
   coauthors.forEach((item) => {
-    const row = document.createElement("div");
-    row.className = "lookup-item";
-    const name = document.createElement("strong");
-    name.textContent = item.author.n;
-    const metaLine = document.createElement("div");
-    metaLine.className = "lookup-meta";
-    metaLine.textContent = `${item.windowArticles.length} shared publication${item.windowArticles.length === 1 ? "" : "s"}; latest ${item.latestYear}; ${authorAffiliationLabel(item.author)}`;
-    row.append(name, metaLine, renderArticleLine(item.windowArticles[0]));
-    els.lookupOutput.appendChild(row);
+    els.lookupOutput.appendChild(renderLookupRow(item, false));
   });
+
+  if (historicalCoauthors.length) {
+    const label = document.createElement("div");
+    label.className = "lookup-section-label";
+    label.textContent = `Historical coauthors (before ${minYear})`;
+    els.lookupOutput.appendChild(label);
+    historicalCoauthors.forEach((item) => {
+      els.lookupOutput.appendChild(renderLookupRow(item, true));
+    });
+  }
+}
+
+function renderLookupRow(item, historical) {
+  const shownArticles = historical ? item.articles : item.windowArticles;
+  const row = document.createElement("div");
+  row.className = historical ? "lookup-item historical" : "lookup-item";
+  const head = document.createElement("div");
+  head.className = "lookup-item-head";
+  const name = document.createElement("strong");
+  name.textContent = item.author.n;
+  head.appendChild(name);
+  if (historical) {
+    const badge = document.createElement("span");
+    badge.className = "badge historical";
+    badge.textContent = "Historical";
+    head.appendChild(badge);
+  }
+  const metaLine = document.createElement("div");
+  metaLine.className = "lookup-meta";
+  metaLine.textContent = `${shownArticles.length} shared publication${shownArticles.length === 1 ? "" : "s"}; latest ${item.latestYear}; ${authorAffiliationLabel(item.author)}`;
+  row.append(head, metaLine, renderArticleLine(shownArticles[0]));
+  return row;
 }
 
 function selectSuggestedAuthor(item, author) {
