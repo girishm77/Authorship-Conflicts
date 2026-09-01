@@ -183,10 +183,17 @@ def main() -> None:
         "pairs": dict(sorted(pair_articles.items(), key=lambda item: item[0])),
     }
 
-    # Collapse author name variants that differ only by middle initials into a
-    # single person (e.g. "Krista J Li" + "Krista Li") so the conflict index is
-    # not fragmented across spellings.
-    merge_payload(payload, verbose=True)
+    # Collapse author name variants into a single person (e.g. "Krista J Li" +
+    # "Krista Li", or institution-gated "Shanker Krishnan" + "H S Krishnan") so
+    # the conflict index is not fragmented across spellings. Pass the uncapped
+    # row-level institution sets so the cross-group gates see full history.
+    merge_payload(
+        payload,
+        verbose=True,
+        full_institutions={
+            norm: set(counts) for norm, counts in author_institutions.items()
+        },
+    )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as handle:

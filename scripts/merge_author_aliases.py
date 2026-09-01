@@ -20,6 +20,23 @@ Merge rule (within a group sharing the same first + last token):
     contains exactly one middle-bearing cluster, so an ambiguous bare name that
     could belong to several distinct people is left untouched.
   * Single-token names are never merged.
+  * Generational suffixes (Jr/Sr/II-IV) are stripped before extracting the
+    surname, so "john g lynch jr" groups and merges with "john g lynch".
+
+Cross-group rules (institution-gated; per the rule "first name + last name +
+institution, never surname alone" adopted in the Marketing Publishing pipeline
+fix of 2026-08-17). Each requires the two sides' full row-level institution
+sets to share at least one exact institution string AND the match to be unique
+across the whole author list; ambiguity or no overlap means no merge:
+  * Goes-by-middle-name: bare "shanker krishnan" merges into the node carrying
+    a "[initial] shanker ... krishnan" spelling ("h shanker krishnan", already
+    collapsed into "h s krishnan"), because such a person publishes under both
+    the middle name alone and the initial-led legal form.
+  * Lone leading initial: bare "a federgruen" merges into the unique
+    institution-sharing full-first-name node "awi federgruen".
+  * Suffix-only twins: "americus reed ii" merges into "americus reed" when the
+    keys are identical after suffix stripping (still institution-gated - a
+    bare/suffixed pair at different institutions could be parent and child).
 
 The transformation is idempotent: re-running on an already-merged payload makes
 no further changes. It can be used as a standalone script or imported and
@@ -37,16 +54,85 @@ from itertools import combinations
 from pathlib import Path
 
 
+SUFFIX_TOKENS = {"jr", "sr", "ii", "iii", "iv"}
+
+# Known-distinct identities that name-form + institution gating alone cannot
+# separate (verified against external records; mirrors the OVERRIDES list in
+# the Marketing Publishing pipeline). Pairs of normalized name keys that must
+# never merge, in either direction, even when every automatic gate passes.
+NEVER_MERGE: set[frozenset[str]] = {
+    # Duke finance's S. ("Vish") Viswanathan is not Maryland IS's Siva Viswanathan.
+    frozenset({"s viswanathan", "siva viswanathan"}),
+    # Marketing's V. Kumar published as "Vipin Kumar" at Houston/UConn, but the
+    # bare "vipin kumar" bucket also contains CS professor Vipin Kumar
+    # (Minnesota) rows, so node-level merging would contaminate the record.
+    frozenset({"v kumar", "vipin kumar"}),
+    # Bare "wei li" is a multi-person bucket (Johns Hopkins, Adelaide, CityU HK,
+    # SUFE careers); C. Wei Li is the LSU/Iowa asset-pricing theorist.
+    frozenset({"wei li", "c wei li"}),
+    # Edward T. Walker (UCLA sociologist, 2026 AMR) is not Edward D. Walker II
+    # (Georgia Southern IS, 1999 MISQ).
+    frozenset({"edward walker", "edward d walker ii"}),
+    # Bare "frank zhang" includes Frank Xiaoling Zhang (Federal Reserve Board,
+    # 2004 JF) alongside Yale's X. Frank Zhang's accounting papers.
+    frozenset({"frank zhang", "x frank zhang"}),
+    # S. Matthew Weinberg (Princeton CS mechanism design) is not Matthew
+    # Weinberg (empirical IO economist, Drexel-era 2018 Mgmt Sci).
+    frozenset({"matthew weinberg", "s matthew weinberg"}),
+    # Terry L. Campbell II (Delaware, PhD 1998) cannot be the Terry L. Campbell
+    # publishing from IMD in 1993/1996.
+    frozenset({"terry campbell ii", "terry l campbell"}),
+}
+
+
+def _forms(author: dict) -> list[str]:
+    return [author["k"], *author.get("al", [])]
+
+
+def _blocked(a: dict, b: dict) -> bool:
+    return any(
+        frozenset((x, y)) in NEVER_MERGE for x in _forms(a) for y in _forms(b)
+    )
+
+
 def _tokens(key: str) -> list[str]:
     return [t for t in key.split(" ") if t]
 
 
+def _strip_suffixes(parts: list[str]) -> list[str]:
+    """Drop trailing generational suffixes, keeping at least first + last."""
+    while len(parts) > 2 and parts[-1] in SUFFIX_TOKENS:
+        parts = parts[:-1]
+    return parts
+
+
 def _split(key: str) -> tuple[str, str, list[str]] | None:
     """Return (first, last, middles) or None for unmergeable single-token keys."""
-    parts = _tokens(key)
+    parts = _strip_suffixes(_tokens(key))
     if len(parts) < 2:
         return None
     return parts[0], parts[-1], parts[1:-1]
+
+
+def _inst_set(author: dict, full_institutions: dict[str, set[str]] | None) -> set[str]:
+    """Institution evidence for an author node, across all its name spellings.
+
+    Prefers the uncapped row-level sets supplied by the build pipeline; falls
+    back to the node's stored top-3 list plus latest affiliation when run
+    standalone on an already-built payload.
+    """
+    keys = [author["k"], *author.get("al", [])]
+    if full_institutions is not None:
+        merged: set[str] = set()
+        for key in keys:
+            merged.update(full_institutions.get(key, ()))
+        if merged:
+            return merged
+    fallback = set(author.get("i", []))
+    if author.get("u"):
+        fallback.add(author["u"])
+    fallback.discard("")
+    return fallback
 
 
 def _middles_compatible(a: list[str], b: list[str]) -> bool:
@@ -92,7 +178,10 @@ def _pick_canonical(cluster: list[dict]) -> dict:
     )[0]
 
 
-def _plan_merges(authors: list[dict]) -> list[list[dict]]:
+def _plan_merges(
+    authors: list[dict],
+    full_institutions: dict[str, set[str]] | None = None,
+) -> list[list[dict]]:
     """Return clusters of >=2 author nodes that should be merged."""
     groups: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for author in authors:
@@ -122,20 +211,137 @@ def _plan_merges(authors: list[dict]) -> list[list[dict]]:
             for cluster in clusters:
                 if len(cluster) >= 2:
                     merges.append(cluster)
+
+    taken = {node["id"] for cluster in merges for node in cluster}
+    merges.extend(_plan_cross_merges(authors, full_institutions, taken))
+
+    # Enforce the NEVER_MERGE blocklist across every planned cluster: drop any
+    # member blocked against an already-kept member, and any cluster that no
+    # longer has two members.
+    filtered: list[list[dict]] = []
+    for cluster in merges:
+        kept: list[dict] = []
+        for node in cluster:
+            if any(_blocked(node, other) for other in kept):
+                continue
+            kept.append(node)
+        if len(kept) >= 2:
+            filtered.append(kept)
+    return filtered
+
+
+def _plan_cross_merges(
+    authors: list[dict],
+    full_institutions: dict[str, set[str]] | None,
+    taken: set[int],
+) -> list[list[dict]]:
+    """Institution-gated cross-group merges (see module docstring).
+
+    Yields two-node clusters only. Every rule requires a non-empty exact-string
+    institution overlap and exactly one surviving candidate; nodes already
+    claimed by a within-group cluster this pass are skipped and each node joins
+    at most one cross-group cluster.
+    """
+    # Spelling indexes over every name form (key + aliases), suffix-stripped.
+    midname_forms: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    fullfirst_by_last: dict[str, list[dict]] = defaultdict(list)
+    by_stripped_key: dict[str, list[dict]] = defaultdict(list)
+    for author in authors:
+        stripped = _strip_suffixes(_tokens(author["k"]))
+        if len(stripped) >= 2:
+            by_stripped_key[" ".join(stripped)].append(author)
+            if len(stripped[0]) > 1:
+                fullfirst_by_last[stripped[-1]].append(author)
+        seen_forms: set[tuple[str, str]] = set()
+        for form in [author["k"], *author.get("al", [])]:
+            t = _strip_suffixes(_tokens(form))
+            if len(t) >= 3 and len(t[0]) == 1 and len(t[1]) > 1:
+                mark = (t[1], t[-1])
+                if mark not in seen_forms:
+                    seen_forms.add(mark)
+                    midname_forms[mark].append(author)
+
+    def gated(source: dict, candidates: list[dict]) -> list[dict]:
+        insts = _inst_set(source, full_institutions)
+        kept = []
+        for cand in candidates:
+            if cand["id"] == source["id"] or cand["id"] in taken:
+                continue
+            if insts & _inst_set(cand, full_institutions):
+                kept.append(cand)
+        return kept
+
+    merges: list[list[dict]] = []
+
+    def claim(a: dict, b: dict) -> None:
+        taken.update((a["id"], b["id"]))
+        merges.append([a, b])
+
+    for author in sorted(authors, key=lambda n: n["id"]):
+        if author["id"] in taken:
+            continue
+        raw = _tokens(author["k"])
+        stripped = _strip_suffixes(raw)
+
+        # Suffix-only twin: "americus reed ii" -> "americus reed".
+        if len(stripped) < len(raw):
+            twins = gated(
+                author,
+                [
+                    c
+                    for c in by_stripped_key.get(" ".join(stripped), [])
+                    if c["k"] != author["k"]
+                ],
+            )
+            if len(twins) == 1:
+                claim(author, twins[0])
+                continue
+
+        if len(stripped) != 2:
+            continue
+        first, last = stripped
+
+        if len(first) > 1:
+            # Goes-by-middle-name: "shanker krishnan" -> "[h] shanker krishnan".
+            hits = gated(author, midname_forms.get((first, last), []))
+            if len(hits) == 1:
+                claim(author, hits[0])
+        else:
+            # Lone leading initial: "a federgruen" -> "awi federgruen".
+            hits = gated(
+                author,
+                [
+                    c
+                    for c in fullfirst_by_last.get(last, [])
+                    if _strip_suffixes(_tokens(c["k"]))[0][0] == first
+                ],
+            )
+            if len(hits) == 1:
+                claim(author, hits[0])
+
     return merges
 
 
-def merge_payload(payload: dict, *, verbose: bool = False) -> dict:
+def merge_payload(
+    payload: dict,
+    *,
+    verbose: bool = False,
+    full_institutions: dict[str, set[str]] | None = None,
+) -> dict:
     """Apply alias merging to a conflict-index payload, iterating to a fixed point.
 
     Absorbing one spelling variant can make a further merge valid (a blocking
     variant is removed), so a single pass is not always complete. We repeat
     until a pass makes no change, which is stable and order-independent.
+
+    full_institutions maps each original normalized name key to its complete
+    row-level institution set; the build pipeline supplies it so cross-group
+    institution gates do not depend on the capped per-node top-3 lists.
     """
     passes = 0
     while True:
         before = len(payload["authors"])
-        _merge_once(payload, verbose=verbose)
+        _merge_once(payload, verbose=verbose, full_institutions=full_institutions)
         passes += 1
         if len(payload["authors"]) == before:
             break
@@ -144,7 +350,12 @@ def merge_payload(payload: dict, *, verbose: bool = False) -> dict:
     return payload
 
 
-def _merge_once(payload: dict, *, verbose: bool = False) -> dict:
+def _merge_once(
+    payload: dict,
+    *,
+    verbose: bool = False,
+    full_institutions: dict[str, set[str]] | None = None,
+) -> dict:
     """Apply one pass of alias merging to a payload in place and return it."""
     authors: list[dict] = payload["authors"]
     pairs: dict[str, list[int]] = payload["pairs"]
@@ -156,7 +367,7 @@ def _merge_once(payload: dict, *, verbose: bool = False) -> dict:
         arts_by_author[left].update(aids)
         arts_by_author[right].update(aids)
 
-    merges = _plan_merges(authors)
+    merges = _plan_merges(authors, full_institutions)
     remap: dict[int, int] = {}
     canonical_ids: set[int] = set()
     merge_log: list[tuple[str, list[str]]] = []
@@ -248,8 +459,9 @@ def _merge_once(payload: dict, *, verbose: bool = False) -> dict:
     )
     meta["aliasMergeCount"] = len(merge_log)
     note = (
-        "Author name variants differing only by middle initials were merged "
-        "into a single person (conservative first+last+initial matching)."
+        "Author name variants were merged into a single person using "
+        "conservative first+last+initial matching, plus institution-gated "
+        "merging of middle-name/lone-initial/suffix spelling variants."
     )
     caveats = meta.setdefault("caveats", [])
     if note not in caveats:
