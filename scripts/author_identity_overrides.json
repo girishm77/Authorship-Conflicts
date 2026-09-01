@@ -1,0 +1,3402 @@
+{
+  "always_merge": [
+    {
+      "keys": [
+        "A Ouorou",
+        "Adam Ouorou"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "A Yavas",
+        "Abdullah Yavas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B Forgues",
+        "Bernard Forgues"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B Vos",
+        "Bart Vos"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "D Samson",
+        "Danny Samson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "F Babonneau",
+        "Frederic Babonneau"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "F. Vanderbeck",
+        "Francois Vanderbeck"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "G Klein",
+        "Gary Klein"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "G Walker",
+        "Gordon Walker"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "I. Shaliastovich",
+        "Ivan Shaliastovich"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J Puerto",
+        "Justo Puerto"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J Wijngaard",
+        "Jacob Wijngaard"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "K Fuller",
+        "Kathleen Fuller"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M Stegemoller",
+        "Mike Stegemoller"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "N Dube",
+        "Nonhlanhla Dube"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P Anderson",
+        "Philip Anderson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P Bonami",
+        "Pierre Bonami"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P Buchholz",
+        "PETER BUCHHOLZ"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P Chretienne",
+        "Philippe Chretienne"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P Hansen",
+        "Pierre Hansen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Handfield",
+        "Robert Handfield"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R McLachlin",
+        "Ron McLachlin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Narula",
+        "Rajneesh Narula"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Reno",
+        "Roberto Reno"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Saloman",
+        "Robert Saloman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R. Colacito",
+        "Riccardo Colacito"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S Weerahandi",
+        "Samaradasa Weerahandi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "T Terlaky",
+        "Tamas Terlaky"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "U. Ayesta",
+        "Urtzi Ayesta"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Y Yamamoto",
+        "Yusaku Yamamoto"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "A.B. Philpott",
+        "Andrew B Philpott"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "A.M. McGahan",
+        "Anita M McGahan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "A.T. Ernst",
+        "Andreas T Ernst"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B.D Jordan",
+        "Bradford D Jordan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B.G. Kingsman",
+        "Brian G Kingsman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B.R. Koka",
+        "Balaji R Koka"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B.V Balachandran",
+        "Bala V Balachandran"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "C.H. Kriebel",
+        "Charles H Kriebel"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "D.C Hambrick",
+        "Donald C Hambrick"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "D.M Boje",
+        "David M Boje"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "E C Sewell",
+        "Edward C Sewell"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "E J Anderson",
+        "Edward J Anderson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "E.K. Burke",
+        "Edmund K Burke"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "F M Bandi",
+        "Federico M Bandi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "H.H. Teo",
+        "Hock-Hai Teo"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "I V Hicks",
+        "Illya V Hicks"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J G Dai",
+        "Jim G Dai"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J H Dula",
+        "Jose H Dula"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J L Goffin",
+        "Jean-Louis Goffin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J-K Kang",
+        "Jun-Koo Kang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J. A. Wagner III",
+        "John A Wagner"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.A. Muckstadt",
+        "John A Muckstadt"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.B Weintrop",
+        "Joseph B Weintrop"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.D. Wisner",
+        "Joel D Wisner"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.F. Campbell",
+        "James F Campbell"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.L. Coles",
+        "Jeffrey L Coles"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.M. Tamarit",
+        "Jose M Tamarit"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.N. Hooker",
+        "John N Hooker"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.R Ritter",
+        "Jay R Ritter"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "K K Boyer",
+        "Kenneth K Boyer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "K.D. Glazebrook",
+        "Kevin D Glazebrook"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "K.J Forbes",
+        "Kristin J Forbes"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "K.Q Wang",
+        "Kevin Q Wang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "L C Thomas",
+        "Lyn C Thomas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "L.C. Hendry",
+        "Linda C Hendry"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M B Slovin",
+        "Myron B Slovin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M.A Petersen",
+        "Mitchell A Petersen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M.A. Lejeune",
+        "Miguel A Lejeune"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M.J. Saltzman",
+        "Matthew J Saltzman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M.L. Chaudhry",
+        "Mohan L Chaudhry"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M.M. Smoller",
+        "Margaret Monroe Smoller"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "N.R. Prabhala",
+        "Nagpurnanand R Prabhala"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P.B Henry",
+        "Peter B Henry"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R H Teunter",
+        "Ruud H Teunter"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R.E Rice",
+        "Ronald E Rice"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R.H. Kwon",
+        "Roy H Kwon"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R.K Aggarwal",
+        "Rajesh K Aggarwal"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S T Cavusgil",
+        "Salih Tamer Cavusgil"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S. H. Jacobson",
+        "Sheldon H Jacobson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.A Mansi",
+        "Sattar A Mansi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.E. Elmaghraby",
+        "Salah E Elmaghraby"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.M Puffer",
+        "Sheila M Puffer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.P. Dutta",
+        "Sourin P Dutta"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "T.S. Ho",
+        "Teng-Suan Ho"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "T.S. Lee",
+        "Tien-Sheng Lee"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "V.A. Strusevich",
+        "Vitaly A Strusevich"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "V.K. Narayanan",
+        "Vadake K Narayanan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "W J GUTJAHR",
+        "Walter J Gutjahr"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "W Y Szeto",
+        "Wai Yuen Szeto"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "A.L. Hoffmann",
+        "Aswin L Hoffmann"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "B.J. Zirger",
+        "Billie J Zirger"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "C A Glass",
+        "Celia A Glass"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "H J Turtle",
+        "Harry J Turtle"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "I. M. Verloop",
+        "Ina Maria Verloop"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J T Linderoth",
+        "Jeffrey T Linderoth"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J W Miller",
+        "Jason W Miller"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.-P. Vial",
+        "Jean-Philippe Vial"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.D Kubik",
+        "Jeffrey D Kubik"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.S. Pang",
+        "Jong-Shi Pang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "K.B Diether",
+        "Karl B Diether"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M A Boschetti",
+        "Marco A Boschetti"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M.S. Krishnan",
+        "Mayuram S Krishnan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "O B Olesen",
+        "Ole Bent Olesen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "O J Boxma",
+        "Onno J Boxma"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "P.K. Sen",
+        "Pradyot K Sen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.E Black",
+        "Sandra E Black"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "T.K. Ralphs",
+        "Ted K. Ralphs"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "W F Messier",
+        "William F Messier, Jr."
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Andrew B Philpott",
+        "Andy Philpott"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Brad Killaly",
+        "Bradley L Killaly"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris A Higgins",
+        "Christopher A Higgins"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris Bingham",
+        "Christopher B Bingham"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris Holland",
+        "Christopher P Holland"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris Mayer",
+        "Christopher Mayer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris McDermott",
+        "Christopher M McDermott"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris S Tang",
+        "Christopher S Tang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris Voss",
+        "Christopher A Voss"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chris Yenkey",
+        "Christopher B Yenkey"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Cliff Stein",
+        "Clifford S Stein"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dan Ariely",
+        "Daniel Ariely"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dan Covitz",
+        "Daniel Covitz"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dan M Cable",
+        "Daniel M Cable"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dan Padgett",
+        "Daniel T Padgett"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dave M Waguespack",
+        "David M Waguespack"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Debbie Macinnis",
+        "Deborah J MacInnis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Doug M Stewart",
+        "Douglas M Stewart"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Francis Murphy",
+        "Frank Murphy"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Greg Distelhorst",
+        "Gregory Distelhorst"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jack Barron",
+        "John M Barron"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeff Barden",
+        "Jeffrey Q Barden"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeff Dyer",
+        "Jeffrey H Dyer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeff Kennington",
+        "Jeffrey L Kennington"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeff Linderoth",
+        "Jeffrey T Linderoth"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "James R Detert",
+        "Jim R Detert"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jon Johnson",
+        "Jonathan L Johnson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Kate Litvak",
+        "Katherine Litvak"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ken Peasnell",
+        "Kenneth V Peasnell"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Larry Weatherford",
+        "Lawrence R Weatherford"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Matt Beane",
+        "Matthew Beane"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Matt Glendening",
+        "Matthew Glendening"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Matt Pinnuck",
+        "Matthew L Pinnuck"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael L Ettredge",
+        "Mike Ettredge"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael A Lewis",
+        "Mike Lewis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael Valente",
+        "Mike Valente"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mitch Warachka",
+        "Mitchell Craig Warachka"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Nicholas Bloom",
+        "Nick Bloom"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Nicholas M Guest",
+        "Nick Guest"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Pete Tashman",
+        "Peter Tashman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ray Fisman",
+        "Raymond Fisman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ray Friedman",
+        "Raymond A Friedman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Rob Cross",
+        "Robert Cross"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ron Giammarino",
+        "Ronald M Giammarino"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ron Thompson",
+        "Ronald L Thompson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sam Chiu",
+        "Samuel S Chiu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sam Melessa",
+        "Samuel J. Melessa"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Steve Maguire",
+        "Steven Maguire"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Steve Matsunaga",
+        "Steven R Matsunaga"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephen A Ross",
+        "Steve Ross"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ted Klastorin",
+        "Theodore D Klastorin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tim Derdenger",
+        "Timothy Derdenger"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tim J Quigley",
+        "Timothy J. Quigley"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tim J. Rowley",
+        "Timothy I Rowley"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tim J. Rowley",
+        "Timothy J Rowley"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tim Johnson",
+        "Timothy C Johnson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tim Morris",
+        "Timothy Morris"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Thomas Schmitt",
+        "Tom Schmitt"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Walt Pohl",
+        "Walter Pohl"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Charles Zhang",
+        "Y. Charles Zhang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christopher Westland",
+        "J Christopher Westland"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Keith Chen",
+        "M Keith Chen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "H Lauren Min",
+        "Lauren Min"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "A Max Reppen",
+        "Max Reppen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael Song",
+        "X. Michael Song"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "I Robert Chiang",
+        "Robert Chiang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "G Zakeri",
+        "Goibon Zakeri"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "G Zakeri",
+        "Golbon Zakeri"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Ramesh",
+        "Ram Ramesh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Ramesh",
+        "Ramaswamy Ramesh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "R Ramesh",
+        "Ranga V Ramesh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S Durvasula",
+        "Srinivas Durvasula"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S Durvasula",
+        "Sroniivas Durvasula"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.; Claessens",
+        "Stijin Claessens"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.; Claessens",
+        "Stijn Claessens"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Adrien D'Avernas",
+        "Adrien d\u2019Avernas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Andrea D'Ariano",
+        "Andrea D\u2019Ariano"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Annebel H. B. De Hoogh",
+        "Annebel HB de Hoogh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Benjamin Barber",
+        "Benjamin Barber IV"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Boo Chun Jung",
+        "Boochun Jung"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Brian L Dos Santos",
+        "Brian L DosSantos"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "C. K. Prahalad",
+        "CK Prahalad"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Che-Wei Liu",
+        "Chewei Liu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chung-Ming Lau",
+        "ChungMing Lau"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "D J Wu",
+        "DJ Wu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Daniella Laureiro-Martinez",
+        "Daniella Laureiro\u2010Martinez"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dov Te'eni",
+        "Dov Te\u2019eni"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Edward McFowland",
+        "Edward McFowland III"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ernest H O'Boyle",
+        "Ernest H. O\u2019Boyle"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Fabrizio Dell Acqua",
+        "Fabrizio Dell\u2019Acqua"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Francesco D Acunto",
+        "Francesco D\u2019Acunto"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Gui-Hua Lin",
+        "Guihua Lin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Hsi-Hui Chang",
+        "Hsihui Chang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Hsuan-Wei Michelle Chen",
+        "Hsuanwei Michelle Chen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "In-Mu Haw",
+        "In\u2010Mu Haw"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Issmail El Hallaoui",
+        "Issmail Elhallaoui"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "ITZHAK BEN\u2010DAVID",
+        "Itzhak Ben-David"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "J.J. Po-An Hsieh",
+        "JJ Po-An Hsieh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jean-Philippe Vergne",
+        "Jean\u2010Philippe Vergne"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Johan S.H. van Leeuwaarden",
+        "Johan SH van Leeuwaarden"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jong-Won Park",
+        "Jongwon Park"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Joo Hee Oh",
+        "JooHee Oh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "JOS\u00c9\u2010LUIS PEYDR\u00d3",
+        "Jose-Luis Peydro"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "JUAN RUBIO\u2010RAMIREZ",
+        "Juan Rubio-Ram\u00edrez"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Juan-Juan Meng",
+        "Juanjuan Meng"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Julio O De Castro",
+        "Julio O DeCastro"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "L N Van Wassenhove",
+        "LN Van Wassenhove"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "L. G. Thomas III",
+        "LG Thomas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Li-Qun Wei",
+        "Liqun Wei"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "M B Sarkar",
+        "MB Sarkar"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Maureen O'Hara",
+        "Maureen OHara"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mohsen El Hafsi",
+        "Mohsen ElHafsi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Myung-Sun Kim",
+        "Myungsun Kim"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "O N Amir",
+        "On Amir"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Pank AJ Ghemawat",
+        "Pankaj Ghemawat"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Pei-yu Chen",
+        "Peiyu Chen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "PIERRE\u2010OLIVIER WEILL",
+        "Pierre-Olivier Weill"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ping Ping Fu",
+        "Pingping Fu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "REGINA WITTENBERG\u2010MOERMAN",
+        "Regina Wittenberg-Moerman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ricardo De La O",
+        "Ricardo Delao"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "S.P. Raj",
+        "SP Raj"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Shin-yi Wu",
+        "Shinyi Wu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Siobhan O'Mahony",
+        "Siobhan O\u2019Mahony"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stefania D'Amico",
+        "Stefania D\u2019Amico"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Su-Ming Wu",
+        "Su\u2010Ming Wu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sung Ko Li",
+        "Sungko Li"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Thomas E De Carlo",
+        "Thomas E DeCarlo"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Wai Fong Boh",
+        "Waifong Boh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Xia Hua Wei",
+        "Xiahua Wei"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Xiao Qi Yang",
+        "Xiaoqi Yang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Yee Sian Ng",
+        "Yeesian Ng"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ying-Ju Chen",
+        "Yingju Chen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zhi-Sheng Ye",
+        "Zhisheng Ye"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zi-Lin He",
+        "Zi\u2010Lin He"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zi-Tian Wang",
+        "Zitian Wang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zi-You Gao",
+        "Ziyou Gao"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zuo-Jun Max Shen",
+        "Zuojun Max Shen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Rajesh K Aggarwal",
+        "Rejesh K Aggarwal"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Devarat Shah",
+        "Devavrat Shah"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Martijn G De Jong",
+        "Martin G de Jong"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Gerald George",
+        "Gerard George"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Adamantios Diamantopoulos",
+        "Adamntios Diamantopoulos"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Bohui Zhang",
+        "Bonhui Zhang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jianghua Zhang",
+        "Jinghua Zhang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Yuxan Zhang",
+        "Yuxuan Zhang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Yinghua Li",
+        "Yiunghua Li"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Aiyong Zhu",
+        "Alyong Zhu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Harbin Singh",
+        "Harbir Singh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeniifer Wu Tucker",
+        "Jennifer Wu Tucker"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Xiaoqing Wang",
+        "Xiaqing Wang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Philip J Lederer",
+        "Phillip J Lederer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Aleander W. Butler",
+        "Alexander W Butler"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christopher S Tang",
+        "Chritopher S. Tang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Alexandar Angelus",
+        "Alexander Angelus"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Garrit H Van Bruggen",
+        "Gerrit H Van Bruggen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Marianne W Lewis",
+        "Marienne W Lewis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Alexander Ljungqvist",
+        "Alexanders Ljungqvist"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Alireza Sabouri",
+        "Alreza Sabouri"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Janna Shuang Wu",
+        "Joanna Shuang Wu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Allaudeen Hameed",
+        "Allauden Hameed"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Elliot N Weiss",
+        "Elliott N Weiss"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sabyasachi Mitra",
+        "Sabyaschi Mitra"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Edward J Riedl",
+        "Erward J. Riedl"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Monic Sun",
+        "Monica Sun"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Frances J Flynn",
+        "Francis J Flynn"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Katharine D Drake",
+        "Katherine D Drake"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Andrei Shleifer",
+        "Anfrei Shleifer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Aneel Karnani",
+        "Annel Karnani"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jonathan N. Cummings",
+        "Jonathon N Cummings"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Asghar Zardkoohi",
+        "Ashghar Zardkoohi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Asher Tishler",
+        "Ashler Tishler"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Avraham Kamara",
+        "Avrahama Kamara"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ayden Alptekinoglu",
+        "Aydin Alptekinoglu"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Wengqiang Xiao",
+        "Wenqiang Xiao"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephan L Mueller",
+        "Stephen L Mueller"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Barnard L Simonin",
+        "Bernard L Simonin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ravnolde Pereira",
+        "Raynolde Pereira"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Belen Villalonga",
+        "Bel\u00c3\u00a9n Villalonga"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Isaac Fox",
+        "Issac Fox"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Bernard Dumas",
+        "Bernhard Dumas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mengxin Zhao",
+        "Mengxing Zhao"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Yichen Bai",
+        "Yicheng Bai"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Xhiling Guo",
+        "Zhiling Guo"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jingui Xie",
+        "Jinqui Xie"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jiwoong Shin",
+        "Jiwwong Shin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Murrary Carlson",
+        "Murray Carlson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Kenneith H Price",
+        "Kenneth H Price"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mathew B. Myers",
+        "Matthew B Myers"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeffrey M. Netter",
+        "Jeffry M Netter"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Daved Barry",
+        "David Barry"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Youngin Yoo",
+        "Youngjin Yoo"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Campbell R Harvey",
+        "Capbell R. Harvey"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Valarie A Zeithaml",
+        "Valerie A Zeithaml"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ceorgy Chabakauri",
+        "Georgy Chabakauri"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Yongheng Deng",
+        "Yongsheng Deng"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Voker Laux",
+        "Volker Laux"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christine Moorman",
+        "Chritine Moorman"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christoher S. Armstrong",
+        "Christopher S Armstrong"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christoher S. Armstrong",
+        "Christpher S Armstrong"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christopher S Armstrong",
+        "Christpher S Armstrong"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christophe Van Den Bulte",
+        "Christphe Van den Bulte"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Christopher W Craighead",
+        "Christpher W Craighead"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Chrysanthos Dellarocas",
+        "Crysanthos Dellarocas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Claudia F Loderer",
+        "Claudio F Loderer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Clemens Sialm",
+        "Clemes Sialm"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeremey C Stein",
+        "Jeremy C Stein"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dabiel J Brass",
+        "Daniel J Brass"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Danald Gerwin",
+        "Donald Gerwin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Danel A Levinthal",
+        "Daniel A Levinthal"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Miguel A Ferreira",
+        "Miquel A Ferreira"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephane Villeneuve",
+        "Stephanie Villeneuve"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Daphne Lui",
+        "Dapne Lui"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mijung Koo",
+        "Minjung Koo"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dimitris Kostamis",
+        "Dmitris Kostamis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Dororthy Leonard-Barton",
+        "Dorothy Leonard-Barton"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Eivor Oborn",
+        "Elvor Oborn"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Fancois Margot",
+        "Francois Margot"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Francesco Franzoni",
+        "Francessco Franzoni"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Goibon Zakeri",
+        "Golbon Zakeri"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Gerald J Tellis",
+        "Gerard J Tellis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ozalp Ozer",
+        "\u00c3\u2013zalp Ozer"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael L Lemmon",
+        "Nichael L. Lemmon"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Rajeev K Tyagi",
+        "Rejeev K Tyagi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Harald Hau",
+        "Harold Hau"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Harald J Van Heerde",
+        "Herald J. Van Heerde"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Haridimos Tsoukas",
+        "Haridomos Tsoukas"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Henri Servaes",
+        "Henry Servaes"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Herminia Ibarra",
+        "Hirminia Ibarra"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Kiyoshi Kato",
+        "Kiyoski Kato"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Thomas H McCurdy",
+        "homas H McCurdy"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Ioanna Constantiou",
+        "Ionna Constantiou"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mathias Stefan",
+        "Matthias Stefan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mathew Thomson",
+        "Matthew Thomson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sridha Moorthy",
+        "Sridhar Moorthy"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephance Cote",
+        "Stephane Cote"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jasmijin C. Bol",
+        "Jasmijn C Bol"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeffrey D Gramlich",
+        "Jefrey D Gramlich"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Johnathan H Grenier",
+        "Jonathan H. Grenier"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Juilian Birkinshaw",
+        "Julian Birkinshaw"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephan J Hoch",
+        "Stephen J Hoch"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Kalle Lyytinen",
+        "Kelle Lyytinen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Kraiswinee Bunyaratavej",
+        "Kraiwinee Bunyaratavej"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Krishnamurthy Muralidhar",
+        "Krishnamurty Muralidhar"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Kristiina Makela",
+        "Kristina Makela"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Marshal E Blume",
+        "Marshall E Blume"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Lilac Nachum",
+        "Lilach Nachum"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Litch Warachka",
+        "Mitch Warachka"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mauro Dell' Amico",
+        "Mauto Dell' Amico"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mario Raveendran",
+        "Marlo Raveendran"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Marjoie A Lyles",
+        "Marjorie A Lyles"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Marjorie A Lyles",
+        "Morjorie A Lyles"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Masaaki Kotabe",
+        "Mosaaki Kotabe"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mathew Rhodes-Kropf",
+        "Matthew Rhodes-Kropf"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mathew Semadeni",
+        "Matthew Semadeni"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael A Habib",
+        "Michel A Habib"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael Benaroch",
+        "Michel Benaroch"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael Laroche",
+        "Michel Laroche"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael Matejka",
+        "Michal Matejka"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael Wedel",
+        "Michel Wedel"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Mohammad Abdellaoui",
+        "Mohammed Abdellaoui"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "MohammadTaghi Hajiaghayi",
+        "Mohammedtaghi Hajiaghayi"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Nanasimhan Jegadeesh",
+        "Narasimhan Jegadeesh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Narasimhan Jegadeesh",
+        "Narsimhan Jegadeesh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Nandkumar Nayar",
+        "Nankumar Nayar"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Tasiana Levina",
+        "Tatsiana Levina"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Nicholas Dopuch",
+        "Nickolas Dopuch"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Oktay Gunluk",
+        "Oxtay Gunluk"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Oliver Boiral",
+        "Olivier Boiral"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Philip E Strahan",
+        "Phillip E. Strahan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Panagiotis G. Ipeirotis",
+        "Pangiotis G. Ipeirotis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Peneet Manchanda",
+        "Puneet Manchanda"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Rafael Rogo",
+        "Rafel Rogo"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sureah Kotha",
+        "Suresh Kotha"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Richard M Cyert",
+        "Richards M Cyert"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Rusian Momot",
+        "Ruslan Momot"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stijin Claessens",
+        "Stijn Claessens"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Wonnghee Tim Huh",
+        "Woonghee Tim Huh"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Santhosh Ramalingegowda",
+        "Santosh Ramalingegowda"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Subhajyothi Bandyopadhyay",
+        "Subhajyoti Bandyopadhyay"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sergery Morgulis-Yakushev",
+        "Sergey Morgulis-Yakushev"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Serguei Netessine",
+        "Serquei Netessine"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Siddarth Vij",
+        "Siddharth Vij"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Sourafel Girma",
+        "Surafel Girma"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephan E Sefcik",
+        "Stephen E Sefcik"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephan J Kobrin",
+        "Stephen J Kobrin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephan R Foerster",
+        "Stephen R Foerster"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "T0horvald Haerem",
+        "Thorvald Haerem"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Taiana Sandino",
+        "Tatiana Sandino"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Timothy W Ruefli",
+        "Timpothy W Ruefli"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Wiliam J Doll",
+        "William J Doll"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "William P Putsis Jr.",
+        "Williams P Putsis"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "David A Johnston",
+        "David Johnston"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Elizabeth M Moore",
+        "Elizabeth Moore"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "George C Chacko",
+        "George Chacko"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "James A Hill",
+        "James Hill"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jeffrey Miller",
+        "Jeffrey S Miller"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "John H Roberts",
+        "John Roberts"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Jose Martinez",
+        "Jose Vicente Martinez"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Karthik Kannan",
+        "Karthik N Kannan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Maarten C.W. Janssen",
+        "Maarten Janssen"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael A Campion",
+        "Michael Campion"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Michael D Johnson",
+        "Michael Johnson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Paul Griffin",
+        "Paul M Griffin"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Paul Healy",
+        "Paul M Healy"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Robert L Phillips",
+        "Robert Phillips"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Robert Goldstein",
+        "Robert S Goldstein"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Robert E Hoskisson",
+        "Robert Hoskisson"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Robert M Morgan",
+        "Robert Morgan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Stephen F Smith",
+        "Stephen Smith"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "William Cready",
+        "William M Cready"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zachary Kaplan",
+        "Zachary R Kaplan"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    },
+    {
+      "keys": [
+        "Zhe (James) Zhang",
+        "Zhe Zhang"
+      ],
+      "reason": "Verified by 41-agent adversarial audit of residual splits (2026-08-31): same person confirmed via row-level evidence and web search."
+    }
+  ],
+  "never_merge": [
+    {
+      "keys": [
+        "s viswanathan",
+        "siva viswanathan"
+      ]
+    },
+    {
+      "keys": [
+        "v kumar",
+        "vipin kumar"
+      ]
+    },
+    {
+      "keys": [
+        "c wei li",
+        "wei li"
+      ]
+    },
+    {
+      "keys": [
+        "edward d walker ii",
+        "edward walker"
+      ]
+    },
+    {
+      "keys": [
+        "frank zhang",
+        "x frank zhang"
+      ]
+    },
+    {
+      "keys": [
+        "matthew weinberg",
+        "s matthew weinberg"
+      ]
+    },
+    {
+      "keys": [
+        "terry campbell ii",
+        "terry l campbell"
+      ]
+    },
+    {
+      "keys": [
+        "e wagner",
+        "erica l wagner"
+      ]
+    },
+    {
+      "keys": [
+        "g rinaldi",
+        "giovanni rinaldi"
+      ]
+    },
+    {
+      "keys": [
+        "g yin",
+        "guopeng yin"
+      ]
+    },
+    {
+      "keys": [
+        "k sivakumar",
+        "kumar n sivakumar"
+      ]
+    },
+    {
+      "keys": [
+        "p venkat",
+        "parth venkat"
+      ]
+    },
+    {
+      "keys": [
+        "r venkatesh",
+        "rengaraj venkatesh"
+      ]
+    },
+    {
+      "keys": [
+        "s gu",
+        "shihao gu"
+      ]
+    },
+    {
+      "keys": [
+        "s kedia",
+        "simi kedia"
+      ]
+    },
+    {
+      "keys": [
+        "s suresh",
+        "santhosh suresh"
+      ]
+    },
+    {
+      "keys": [
+        "s. ramaswami",
+        "sridhar n ramaswami"
+      ]
+    },
+    {
+      "keys": [
+        "t ito",
+        "takatoshi ito"
+      ]
+    },
+    {
+      "keys": [
+        "v. srinivasan",
+        "venkat srinivasan"
+      ]
+    },
+    {
+      "keys": [
+        "w grossman",
+        "wayne grossman"
+      ]
+    },
+    {
+      "keys": [
+        "s p sethi",
+        "suresh p sethi"
+      ]
+    },
+    {
+      "keys": [
+        "c w park",
+        "chul w park"
+      ]
+    },
+    {
+      "keys": [
+        "j a morris",
+        "john a morris, jr."
+      ]
+    },
+    {
+      "keys": [
+        "j w barnes",
+        "john w+ barnes"
+      ]
+    },
+    {
+      "keys": [
+        "j.h. jung",
+        "jay heon jung"
+      ]
+    },
+    {
+      "keys": [
+        "k.c. chan",
+        "kam c chan"
+      ]
+    },
+    {
+      "keys": [
+        "k.f. wong",
+        "kin fai ellick wong"
+      ]
+    },
+    {
+      "keys": [
+        "m m ali",
+        "mukhtar m ali"
+      ]
+    },
+    {
+      "keys": [
+        "r g thompson",
+        "rodney g thompson"
+      ]
+    },
+    {
+      "keys": [
+        "r j wilson",
+        "ryan j wilson"
+      ]
+    },
+    {
+      "keys": [
+        "s l taylor",
+        "stephen l taylor"
+      ]
+    },
+    {
+      "keys": [
+        "y e tang",
+        "yihui (elina) tang"
+      ]
+    },
+    {
+      "keys": [
+        "y.s. choi",
+        "yong seok choi"
+      ]
+    },
+    {
+      "keys": [
+        "alex shapiro",
+        "alexander shapiro"
+      ]
+    },
+    {
+      "keys": [
+        "chris k anderson",
+        "christopher w anderson"
+      ]
+    },
+    {
+      "keys": [
+        "jen s shang",
+        "jennifer shang"
+      ]
+    },
+    {
+      "keys": [
+        "michael lewis",
+        "mike lewis"
+      ]
+    },
+    {
+      "keys": [
+        "steve thompson",
+        "steven thompson"
+      ]
+    },
+    {
+      "keys": [
+        "colin campbell",
+        "t. colin campbell"
+      ]
+    },
+    {
+      "keys": [
+        "david park",
+        "u david park"
+      ]
+    },
+    {
+      "keys": [
+        "george benson",
+        "p george benson"
+      ]
+    },
+    {
+      "keys": [
+        "e james flynn",
+        "james flynn"
+      ]
+    },
+    {
+      "keys": [
+        "i-lin wang",
+        "lin wang"
+      ]
+    },
+    {
+      "keys": [
+        "j.mark keil",
+        "mark keil"
+      ]
+    },
+    {
+      "keys": [
+        "michael holmes",
+        "r michael holmes jr."
+      ]
+    },
+    {
+      "keys": [
+        "k ozgur demirtas",
+        "ozgur demirtas"
+      ]
+    },
+    {
+      "keys": [
+        "g peter zhang",
+        "peter zhang"
+      ]
+    },
+    {
+      "keys": [
+        "eun-hee kim",
+        "eunhee kim"
+      ]
+    },
+    {
+      "keys": [
+        "hwa young kim",
+        "hwayoung kim"
+      ]
+    },
+    {
+      "keys": [
+        "jan hanousek",
+        "jan hanousek jr."
+      ]
+    },
+    {
+      "keys": [
+        "jing yu yang",
+        "jingyu yang"
+      ]
+    },
+    {
+      "keys": [
+        "jong seok lee",
+        "jongseok lee"
+      ]
+    },
+    {
+      "keys": [
+        "ju-young kim",
+        "juyoung kim"
+      ]
+    },
+    {
+      "keys": [
+        "jung min kim",
+        "jungmin kim"
+      ]
+    },
+    {
+      "keys": [
+        "jung won lee",
+        "jungwon lee"
+      ]
+    },
+    {
+      "keys": [
+        "kyung min park",
+        "kyungmin park"
+      ]
+    },
+    {
+      "keys": [
+        "michael c row",
+        "michael crow"
+      ]
+    },
+    {
+      "keys": [
+        "min soo kim",
+        "minsoo kim"
+      ]
+    },
+    {
+      "keys": [
+        "shi-hao zhou",
+        "shihao zhou"
+      ]
+    },
+    {
+      "keys": [
+        "sung ho park",
+        "sungho park"
+      ]
+    },
+    {
+      "keys": [
+        "tae-hyun kim",
+        "taehyun kim"
+      ]
+    },
+    {
+      "keys": [
+        "wen-xin zhou",
+        "wenxin zhou"
+      ]
+    },
+    {
+      "keys": [
+        "xiao-jun wang",
+        "xiaojun wang"
+      ]
+    },
+    {
+      "keys": [
+        "xiao-jun zhang",
+        "xiaojun zhang"
+      ]
+    },
+    {
+      "keys": [
+        "yong jin kim",
+        "yongjin kim"
+      ]
+    },
+    {
+      "keys": [
+        "young sang kim",
+        "youngsang kim"
+      ]
+    },
+    {
+      "keys": [
+        "siddharth bhattacharya",
+        "siddhartha bhattacharya"
+      ]
+    },
+    {
+      "keys": [
+        "siddharth sharma",
+        "siddhartha sharma"
+      ]
+    },
+    {
+      "keys": [
+        "liwei chen",
+        "yiwei chen"
+      ]
+    },
+    {
+      "keys": [
+        "ching wang",
+        "chong wang"
+      ]
+    },
+    {
+      "keys": [
+        "yajin wang",
+        "yajun wang"
+      ]
+    },
+    {
+      "keys": [
+        "shaohua wu",
+        "shaohui wu"
+      ]
+    },
+    {
+      "keys": [
+        "andrei simonov",
+        "andrey simonov"
+      ]
+    },
+    {
+      "keys": [
+        "yanli jia",
+        "yanlin jia"
+      ]
+    },
+    {
+      "keys": [
+        "nan (andy) zhang",
+        "nan zhang"
+      ]
+    },
+    {
+      "keys": [
+        "yu wang",
+        "yu-ming wang"
+      ]
+    }
+  ]
+}

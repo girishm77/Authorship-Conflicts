@@ -84,6 +84,27 @@ NEVER_MERGE: set[frozenset[str]] = {
     frozenset({"terry campbell ii", "terry l campbell"}),
 }
 
+# Curated same-person pairs the automatic gates cannot reach (typos, movers
+# with no shared institution string, nicknames, punctuation variants). Loaded
+# from author_identity_overrides.json next to this script, where every entry
+# carries the verification reason. The JSON may also extend NEVER_MERGE.
+ALWAYS_MERGE: set[frozenset[str]] = set()
+
+
+def _load_overrides() -> None:
+    path = Path(__file__).resolve().parent / "author_identity_overrides.json"
+    if not path.exists():
+        return
+    with path.open(encoding="utf-8") as handle:
+        data = json.load(handle)
+    for entry in data.get("never_merge", []):
+        NEVER_MERGE.add(frozenset(entry["keys"]))
+    for entry in data.get("always_merge", []):
+        ALWAYS_MERGE.add(frozenset(entry["keys"]))
+
+
+_load_overrides()
+
 
 def _forms(author: dict) -> list[str]:
     return [author["k"], *author.get("al", [])]
@@ -276,6 +297,26 @@ def _plan_cross_merges(
     def claim(a: dict, b: dict) -> None:
         taken.update((a["id"], b["id"]))
         merges.append([a, b])
+
+    # Curated ALWAYS_MERGE pairs first: resolve each key to the node currently
+    # carrying it (as key or alias) and merge the two nodes when both exist.
+    if ALWAYS_MERGE:
+        home: dict[str, dict] = {}
+        for author in authors:
+            for form in _forms(author):
+                home.setdefault(form, author)
+        for pair in sorted(ALWAYS_MERGE, key=sorted):
+            k1, k2 = sorted(pair)
+            a, b = home.get(k1), home.get(k2)
+            if (
+                a is not None
+                and b is not None
+                and a["id"] != b["id"]
+                and a["id"] not in taken
+                and b["id"] not in taken
+                and not _blocked(a, b)
+            ):
+                claim(a, b)
 
     for author in sorted(authors, key=lambda n: n["id"]):
         if author["id"] in taken:
