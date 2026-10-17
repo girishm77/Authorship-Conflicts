@@ -47,7 +47,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
+import unicodedata
 from collections import defaultdict
 from datetime import datetime, timezone
 from itertools import combinations
@@ -91,6 +93,18 @@ NEVER_MERGE: set[frozenset[str]] = {
 ALWAYS_MERGE: set[frozenset[str]] = set()
 
 
+def _key(value: str) -> str:
+    """Normalize a name exactly as build_conflict_data.normalize_name does.
+
+    Override entries may be written in display form ("A.M. McGahan"); node keys
+    are always normalized ("a m mcgahan"), so every override key goes through
+    this before it is compared. Keep the two functions in sync.
+    """
+    asciiish = unicodedata.normalize("NFKD", value or "").encode("ascii", "ignore").decode("ascii")
+    cleaned = re.sub(r"[^a-z0-9]+", " ", asciiish.lower())
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
 def _load_overrides() -> None:
     path = Path(__file__).resolve().parent / "author_identity_overrides.json"
     if not path.exists():
@@ -98,12 +112,28 @@ def _load_overrides() -> None:
     with path.open(encoding="utf-8") as handle:
         data = json.load(handle)
     for entry in data.get("never_merge", []):
-        NEVER_MERGE.add(frozenset(entry["keys"]))
+        NEVER_MERGE.add(frozenset(_key(k) for k in entry["keys"]))
     for entry in data.get("always_merge", []):
-        ALWAYS_MERGE.add(frozenset(entry["keys"]))
+        ALWAYS_MERGE.add(frozenset(_key(k) for k in entry["keys"]))
 
 
 _load_overrides()
+
+
+def _report_unresolved_overrides(payload: dict) -> None:
+    """Warn about curated pairs whose keys match no node in the payload.
+
+    A silent miss here once left 420 verified merges inert, so every verbose
+    build surfaces them.
+    """
+    forms = {form for author in payload["authors"] for form in _forms(author)}
+    missing = sorted(
+        tuple(sorted(pair)) for pair in ALWAYS_MERGE if not pair <= forms
+    )
+    if missing:
+        print(f"WARNING: {len(missing)} ALWAYS_MERGE pair(s) match no node key:")
+        for pair in missing[:20]:
+            print(f"  {pair}")
 
 
 def _forms(author: dict) -> list[str]:
@@ -379,6 +409,8 @@ def merge_payload(
     row-level institution set; the build pipeline supplies it so cross-group
     institution gates do not depend on the capped per-node top-3 lists.
     """
+    if verbose:
+        _report_unresolved_overrides(payload)
     passes = 0
     while True:
         before = len(payload["authors"])
