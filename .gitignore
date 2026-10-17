@@ -1,2 +1,5 @@
 utd_articles_1990_2025.csv
 .claude/
+data/conflict-index.json.pre-*
+__pycache__/
+*.pyc
